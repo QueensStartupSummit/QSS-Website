@@ -32,7 +32,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
         style={{ 
-          backgroundImage: 'url(/Banner.jpg.jpeg)',
+          backgroundImage: 'url(/Banner.jpeg)',
           backgroundPosition: isMobile ? 'center 30%' : 'center center'
         }}
       ></div>
