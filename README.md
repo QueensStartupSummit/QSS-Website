@@ -12,25 +12,6 @@ Queen's Startup Summit is a student-run organization founded in 2013 in partners
 - **200+ Ideas Pitched** during competitions
 - **25+ Schools Represented** from coast to coast
 
-## 🌟 Features
-
-### Modern Web Technologies
-- **React 18** with TypeScript for robust component architecture
-- **Vite** for lightning-fast development and optimized builds
-- **Tailwind CSS 4** with custom mobile-first design system
-- **Three.js & React Three Fiber** for immersive 3D experiences
-- **Framer Motion** for smooth animations and transitions
-
-### Performance Optimizations
-- **Lazy Loading**: 3D components and heavy assets load only when needed
-- **Code Splitting**: Optimized bundle chunks for faster initial load times
-- **Mobile-First**: Responsive design prioritizing mobile performance
-- **Progressive Enhancement**: Core functionality works without JavaScript
-
-### Accessibility & UX
-- **WCAG 2.1 Compliant**: Proper contrast ratios, keyboard navigation, screen reader support
-- **Touch-Friendly**: 44px minimum touch targets for mobile devices
-
 ## ▶️ Getting Started
 
 ### Prerequisites
@@ -131,26 +112,6 @@ The build process creates optimized chunks for better caching and performance:
 - **3D Assets**: Lazy loaded only for desktop users
 - **Build Time**: ~25 seconds (optimized from 49 seconds)
 - **Lighthouse Score**: 95+ on all metrics
-
-## 📂 Project Structure
-
-```
-src/
-├── components/          # React components
-│   ├── Header.tsx      # Navigation and mobile menu
-│   ├── Hero.tsx        # Landing section with 3D badge
-│   ├── About.tsx       # About QSS section
-│   ├── Testimonial.tsx # Student testimonials
-│   ├── GetInvolved.tsx # Registration information
-│   ├── Gallery.tsx     # Event photo gallery
-│   ├── Sponsors.tsx    # Partner organizations
-│   ├── Contact.tsx     # Contact information
-│   ├── Footer.tsx      # Site footer
-│   └── Badge3D.tsx     # Interactive 3D badge
-├── assets/             # Static assets
-├── styles/             # Global styles and Tailwind config
-└── utils/              # Utility functions and helpers
-```
 
 ## 🤝 Contributing
 
