@@ -11,12 +11,19 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     minify: 'terser',
+    chunkSizeWarningLimit: 1000, // Increase limit to 1MB to reduce warnings
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          three: ['three', '@react-three/fiber', '@react-three/drei', '@react-three/rapier'],
-          ui: ['lucide-react']
+          // Split Three.js into separate chunks for better caching
+          'three-core': ['three'],
+          'three-fiber': ['@react-three/fiber'],
+          'three-drei': ['@react-three/drei'],
+          'three-rapier': ['@react-three/rapier'],
+          'three-meshline': ['meshline'],
+          ui: ['lucide-react'],
+          gallery: ['lightgallery']
         }
       }
     }

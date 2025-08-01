@@ -98,114 +98,13 @@ export default {
     // Custom plugin for mobile utilities
     function ({ addUtilities, theme }) {
       const newUtilities = {
-        // Touch target utilities
+        // Keep only essential touch target utility
         '.touch-target': {
           minHeight: theme('spacing.touch-target'),
           minWidth: theme('spacing.touch-target'),
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-        },
-        '.touch-target-lg': {
-          minHeight: theme('spacing.touch-target-lg'),
-          minWidth: theme('spacing.touch-target-lg'),
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-        },
-
-        // Mobile-first container utilities
-        '.container-mobile': {
-          width: '100%',
-          paddingLeft: theme('spacing.4'),
-          paddingRight: theme('spacing.4'),
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          '@screen sm': {
-            paddingLeft: theme('spacing.6'),
-            paddingRight: theme('spacing.6'),
-          },
-          '@screen lg': {
-            paddingLeft: theme('spacing.8'),
-            paddingRight: theme('spacing.8'),
-          },
-        },
-
-        // Mobile-optimized text utilities
-        '.text-mobile-readable': {
-          fontSize: theme('fontSize.mobile-base[0]'),
-          lineHeight: theme('fontSize.mobile-base[1].lineHeight'),
-          '@screen sm': {
-            fontSize: theme('fontSize.base'),
-            lineHeight: theme('lineHeight.6'),
-          },
-        },
-
-        // Mobile-first grid utilities
-        '.grid-mobile-1': {
-          display: 'grid',
-          gridTemplateColumns: '1fr',
-          gap: theme('spacing.4'),
-          '@screen md': {
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: theme('spacing.6'),
-          },
-        },
-        '.grid-mobile-2': {
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: theme('spacing.3'),
-          '@screen md': {
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: theme('spacing.4'),
-          },
-        },
-
-        // Mobile-optimized button utilities
-        '.btn-mobile': {
-          padding: `${theme('spacing.3')} ${theme('spacing.6')}`,
-          minHeight: theme('spacing.touch-target'),
-          borderRadius: theme('borderRadius.mobile'),
-          fontSize: theme('fontSize.mobile-base[0]'),
-          fontWeight: theme('fontWeight.semibold'),
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: `all ${theme('transitionDuration.mobile')} ease-in-out`,
-          '@screen sm': {
-            padding: `${theme('spacing.4')} ${theme('spacing.8')}`,
-            fontSize: theme('fontSize.base'),
-          },
-        },
-
-        // Mobile-first form utilities
-        '.form-input-mobile': {
-          width: '100%',
-          padding: theme('spacing.3'),
-          minHeight: theme('spacing.touch-target'),
-          borderRadius: theme('borderRadius.mobile'),
-          border: `1px solid ${theme('colors.gray.300')}`,
-          fontSize: theme('fontSize.mobile-base[0]'),
-          transition: `border-color ${theme('transitionDuration.mobile')} ease-in-out`,
-          '&:focus': {
-            outline: 'none',
-            borderColor: theme('colors.qss.teal'),
-            boxShadow: `0 0 0 3px ${theme('colors.qss.teal')}20`,
-          },
-        },
-
-        // Mobile-optimized spacing utilities
-        '.space-mobile-y > * + *': {
-          marginTop: theme('spacing.mobile-lg'),
-          '@screen sm': {
-            marginTop: theme('spacing.6'),
-          },
-        },
-        '.space-mobile-x > * + *': {
-          marginLeft: theme('spacing.mobile-lg'),
-          '@screen sm': {
-            marginLeft: theme('spacing.6'),
-          },
         },
       }
 

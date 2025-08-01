@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
-import Badge3D from './Badge3D';
+
+// Lazy load the 3D component to reduce initial bundle size
+const Badge3D = lazy(() => import('./Badge3D'));
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -31,7 +33,7 @@ const Hero = () => {
       {/* Background - optimized for mobile */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
-        style={{ 
+        style={{
           backgroundImage: 'url(/Banner.jpeg)',
           backgroundPosition: isMobile ? 'center 30%' : 'center center'
         }}
@@ -48,9 +50,9 @@ const Hero = () => {
               <div className="relative z-10">
                 {/* QSS Logo - responsive sizing */}
                 <div className="flex justify-center mb-4 md:mb-6">
-                  <img 
-                    src="/qss-full-logo.png" 
-                    alt="Queen's Startup Summit" 
+                  <img
+                    src="/qss-full-logo.png"
+                    alt="Queen's Startup Summit"
                     className="h-28 sm:h-32 md:h-36 lg:h-36 xl:h-40 w-auto max-w-full"
                   />
                 </div>
@@ -93,13 +95,18 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Badge3D Section - conditionally rendered only on desktop */}
+          {/* Badge3D Section - lazy loaded and conditionally rendered only on desktop */}
           {!isMobile && (
             <div className="hidden lg:flex lg:col-span-3 justify-center items-center h-full w-full p-8">
               <div className="relative w-full h-full max-w-full max-h-full flex justify-center items-center">
-
                 <div className="relative w-full h-full flex justify-center items-center">
-                  <Badge3D />
+                  <Suspense fallback={
+                    <div className="flex items-center justify-center w-full h-full">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
+                    </div>
+                  }>
+                    <Badge3D />
+                  </Suspense>
                 </div>
               </div>
             </div>
