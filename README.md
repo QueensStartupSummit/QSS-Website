@@ -117,18 +117,6 @@ The website is built with a mobile-first approach, ensuring optimal performance 
 ### Brand Colors
 - **Primary Teal**: `#58baba` - Main brand color
 - **Secondary Yellow**: `#ddc946` - Accent and call-to-action color
-- **Supporting Green**: `#74a84a` - Additional brand element
-
-### Typography Scale
-- Mobile-optimized font sizes with responsive scaling
-- System font stack for optimal performance
-- Proper line heights for readability
-
-### Component Library
-- Reusable button components with consistent styling
-- Card layouts with hover effects and shadows
-- Form inputs with focus states and validation
-- Navigation components with mobile menu support
 
 ## 🔧 Build Optimization
 
@@ -187,22 +175,6 @@ We welcome contributions from the community! Please follow these steps:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- **Queen's Innovation Connector** - Our founding partner
-- **QSS Executive Team** - Vision and leadership
-- **Student Volunteers** - Making the event possible
-- **Industry Partners** - Supporting student entrepreneurship
-- **Open Source Community** - Amazing tools and libraries
-
-## 📞 Contact
-
-- **Website**: [queensstartup.com](https://queensstartup.com)
-- **Email**: info@queensstartup.com
-- **Instagram**: [@queensstartup](https://instagram.com/queensstartup)
-- **LinkedIn**: [Queen's Startup Summit](https://linkedin.com/company/queens-startup-summit)
-
----
 
 **Built with ❤️ by the QSS Tech Team**
 
