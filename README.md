@@ -115,13 +115,19 @@ The build process creates optimized chunks for better caching and performance:
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Please follow these steps:
+For the tech team to keep our workflow clean and consistent, follow these steps when making changes to the website:
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Commit your changes**: `git commit -m 'Add amazing feature'`
-4. **Push to the branch**: `git push origin feature/amazing-feature`
-5. **Open a Pull Request**
+1. **Create a new branch** for your feature or fix:  
+   `git checkout -b feature/your-feature-name`
+
+2. **Make your changes**, then commit with a clear message:  
+   `git commit -m "Add feature: your message"`
+
+3. **Push your branch** to the remote repo:  
+   `git push origin feature/your-feature-name`
+
+4. **Open a Pull Request** and request review from the team.
+
 
 ### Development Guidelines
 - Follow the existing code style and conventions
