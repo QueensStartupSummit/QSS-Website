@@ -54,6 +54,7 @@ const Hero = () => {
                     src="/qss-full-logo.png"
                     alt="Queen's Startup Summit"
                     className="h-28 sm:h-32 md:h-36 lg:h-36 xl:h-40 w-auto max-w-full"
+                    fetchPriority="high"
                   />
                 </div>
 
