@@ -27,7 +27,7 @@ export default {
         'touch-target': '2.75rem', // 44px - minimum touch target size
         'touch-target-lg': '3rem', // 48px - comfortable touch target
       },
-      
+
       // Mobile-optimized font sizes
       fontSize: {
         'mobile-xs': ['0.75rem', { lineHeight: '1rem' }],     // 12px
@@ -39,7 +39,7 @@ export default {
         'mobile-3xl': ['1.875rem', { lineHeight: '2.25rem' }], // 30px
         'mobile-4xl': ['2.25rem', { lineHeight: '2.5rem' }],  // 36px
       },
-      
+
       // QSS Brand colors
       colors: {
         qss: {
@@ -52,14 +52,14 @@ export default {
           'yellow-dark': '#c4b63d',
         }
       },
-      
+
       // Mobile-optimized container sizes
       maxWidth: {
         'mobile': '100%',
         'mobile-content': '90%',
         'mobile-form': '95%',
       },
-      
+
       // Mobile-friendly border radius
       borderRadius: {
         'mobile-sm': '0.375rem',  // 6px
@@ -67,7 +67,7 @@ export default {
         'mobile-lg': '0.75rem',   // 12px
         'mobile-xl': '1rem',      // 16px
       },
-      
+
       // Mobile-optimized shadows
       boxShadow: {
         'mobile-sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
@@ -75,14 +75,14 @@ export default {
         'mobile-lg': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
         'mobile-xl': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
       },
-      
+
       // Animation durations optimized for mobile
       transitionDuration: {
         'mobile-fast': '150ms',
         'mobile': '200ms',
         'mobile-slow': '300ms',
       },
-      
+
       // Z-index scale for layering
       zIndex: {
         'mobile-dropdown': '1000',
@@ -96,7 +96,7 @@ export default {
   },
   plugins: [
     // Custom plugin for mobile utilities
-    function({ addUtilities, theme }) {
+    function ({ addUtilities, theme }) {
       const newUtilities = {
         // Touch target utilities
         '.touch-target': {
@@ -113,7 +113,7 @@ export default {
           alignItems: 'center',
           justifyContent: 'center',
         },
-        
+
         // Mobile-first container utilities
         '.container-mobile': {
           width: '100%',
@@ -130,7 +130,7 @@ export default {
             paddingRight: theme('spacing.8'),
           },
         },
-        
+
         // Mobile-optimized text utilities
         '.text-mobile-readable': {
           fontSize: theme('fontSize.mobile-base[0]'),
@@ -140,7 +140,7 @@ export default {
             lineHeight: theme('lineHeight.6'),
           },
         },
-        
+
         // Mobile-first grid utilities
         '.grid-mobile-1': {
           display: 'grid',
@@ -160,7 +160,7 @@ export default {
             gap: theme('spacing.4'),
           },
         },
-        
+
         // Mobile-optimized button utilities
         '.btn-mobile': {
           padding: `${theme('spacing.3')} ${theme('spacing.6')}`,
@@ -177,7 +177,7 @@ export default {
             fontSize: theme('fontSize.base'),
           },
         },
-        
+
         // Mobile-first form utilities
         '.form-input-mobile': {
           width: '100%',
@@ -193,7 +193,7 @@ export default {
             boxShadow: `0 0 0 3px ${theme('colors.qss.teal')}20`,
           },
         },
-        
+
         // Mobile-optimized spacing utilities
         '.space-mobile-y > * + *': {
           marginTop: theme('spacing.mobile-lg'),
@@ -208,7 +208,7 @@ export default {
           },
         },
       }
-      
+
       addUtilities(newUtilities)
     }
   ],

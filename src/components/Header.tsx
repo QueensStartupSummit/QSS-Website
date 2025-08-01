@@ -53,9 +53,10 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <img 
-              src="/qss-cube.svg" 
+              src="/qss-cube.png" 
               alt="QSS Logo" 
               className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12" 
+              style={{ imageRendering: 'crisp-edges' }}
             />
             <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
               <span className="sm:hidden">QSS</span>

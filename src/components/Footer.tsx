@@ -31,7 +31,12 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="max-w-md">
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/qss-cube-white.svg" alt="QSS Logo" className="h-8 w-8" />
+              <img 
+                src="/qss-cube-white.svg" 
+                alt="QSS Logo" 
+                className="h-8 w-8" 
+                style={{ imageRendering: 'crisp-edges' }}
+              />
               <h3 className="text-2xl font-bold">Queen's Startup Summit</h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">

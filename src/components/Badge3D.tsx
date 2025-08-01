@@ -4,7 +4,7 @@ import { Canvas, extend, useThree, useFrame } from '@react-three/fiber'
 import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei'
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier'
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline'
-import { useControls } from 'leva'
+
 
 extend({ MeshLineGeometry, MeshLineMaterial })
 
@@ -12,12 +12,11 @@ useGLTF.preload('/qsscard.glb')
 useTexture.preload('/band.jpg')
 
 export default function Badge3D() {
-  const { debug } = useControls({ debug: false })
   return (
     <div className="w-full h-[1000px]">
       <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
         <ambientLight intensity={0.8} />
-        <Physics debug={debug} interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+        <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
           <Band />
         </Physics>
         <Environment blur={0.75}>

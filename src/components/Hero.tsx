@@ -27,7 +27,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Background - optimized for mobile */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
@@ -51,7 +51,7 @@ const Hero = () => {
                   <img 
                     src="/qss-full-logo.png" 
                     alt="Queen's Startup Summit" 
-                    className="h-28 sm:h-32 md:h-36 lg:h-36 xl:h-44 w-auto max-w-full"
+                    className="h-28 sm:h-32 md:h-36 lg:h-36 xl:h-40 w-auto max-w-full"
                   />
                 </div>
 
