@@ -30,38 +30,8 @@ Queen's Startup Summit is a student-run organization founded in 2013 in partners
 ### Accessibility & UX
 - **WCAG 2.1 Compliant**: Proper contrast ratios, keyboard navigation, screen reader support
 - **Touch-Friendly**: 44px minimum touch targets for mobile devices
-- **Reduced Motion**: Respects user preferences for motion sensitivity
-- **Semantic HTML**: Proper heading hierarchy and landmark elements
 
-## 🛠 Tech Stack
-
-### Frontend Framework
-- **React 18.2.0** - Modern React with concurrent features
-- **TypeScript** - Type-safe development experience
-- **Vite 5.0.8** - Next-generation frontend tooling
-
-### Styling & Design
-- **Tailwind CSS 4.1.11** - Utility-first CSS framework
-- **Custom Design System** - Mobile-optimized spacing, typography, and components
-- **CSS Custom Properties** - Dynamic theming and responsive design
-
-### 3D Graphics & Animation
-- **Three.js 0.160.1** - 3D graphics library
-- **@react-three/fiber 8.15.15** - React renderer for Three.js
-- **@react-three/drei 9.96.4** - Useful helpers for React Three Fiber
-- **@react-three/rapier 1.3.0** - Physics engine integration
-- **meshline 3.2.0** - Advanced line rendering
-
-### UI Components & Icons
-- **Lucide React 0.534.0** - Beautiful, customizable icons
-- **LightGallery 2.9.0** - Responsive image gallery with zoom and thumbnails
-
-### Build Tools & Optimization
-- **Terser 5.43.1** - JavaScript minification
-- **PostCSS 8.5.6** - CSS processing and optimization
-- **Autoprefixer 10.4.21** - Automatic vendor prefixing
-
-## 🚀 Getting Started
+## ▶️ Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -93,6 +63,34 @@ Queen's Startup Summit is a student-run organization founded in 2013 in partners
 - `npm run dev` - Start development server with hot reload
 - `npm run build` - Build optimized production bundle
 - `npm run preview` - Preview production build locally
+
+## 🛠 Tech Stack
+
+### Frontend Framework
+- **React 18.2.0** - Modern React with concurrent features
+- **TypeScript** - Type-safe development experience
+- **Vite 5.0.8** - Next-generation frontend tooling
+
+### Styling & Design
+- **Tailwind CSS 4.1.11** - Utility-first CSS framework
+- **Custom Design System** - Mobile-optimized spacing, typography, and components
+- **CSS Custom Properties** - Dynamic theming and responsive design
+
+### 3D Graphics & Animation
+- **Three.js 0.160.1** - 3D graphics library
+- **@react-three/fiber 8.15.15** - React renderer for Three.js
+- **@react-three/drei 9.96.4** - Useful helpers for React Three Fiber
+- **@react-three/rapier 1.3.0** - Physics engine integration
+- **meshline 3.2.0** - Advanced line rendering
+
+### UI Components & Icons
+- **Lucide React 0.534.0** - Beautiful, customizable icons
+- **LightGallery 2.9.0** - Responsive image gallery with zoom and thumbnails
+
+### Build Tools & Optimization
+- **Terser 5.43.1** - JavaScript minification
+- **PostCSS 8.5.6** - CSS processing and optimization
+- **Autoprefixer 10.4.21** - Automatic vendor prefixing
 
 ## 📱 Mobile-First Design
 
