@@ -2,7 +2,7 @@
 
 A modern, responsive website for Queen's Startup Summit (QSS) - Canada's premier student-run entrepreneurship competition and conference.
 
-## 🚀 About Queen's Startup Summit
+## 🗻 About Queen's Startup Summit
 
 Queen's Startup Summit is a student-run organization founded in 2013 in partnership with the Queen's Innovation Connector. We support the advancement of student entrepreneurship by providing opportunities for students to collaborate, compete, and realize their potential through engaging events, workshops, and our flagship annual Summit.
 
