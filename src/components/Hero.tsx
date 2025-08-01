@@ -34,7 +34,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
         style={{
-          backgroundImage: 'url(/Banner.jpeg)',
+          backgroundImage: 'url(/Banner-hero.webp)',
           backgroundPosition: isMobile ? 'center 30%' : 'center center'
         }}
       ></div>
@@ -51,9 +51,11 @@ const Hero = () => {
                 {/* QSS Logo - responsive sizing */}
                 <div className="flex justify-center mb-4 md:mb-6">
                   <img
-                    src="/qss-full-logo.png"
+                    src="/qss-full-logo.webp"
                     alt="Queen's Startup Summit"
                     className="h-28 sm:h-32 md:h-36 lg:h-36 xl:h-40 w-auto max-w-full"
+                    width="400"
+                    height="292"
                     fetchPriority="high"
                   />
                 </div>

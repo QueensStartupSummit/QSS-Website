@@ -268,9 +268,12 @@ const Contact = () => {
           <div className="order-1 lg:order-2">
             <div className="relative mb-6 sm:mb-8">
               <img
-                src="/Contact-Banner.jpeg"
+                src="/Contact-Banner.webp"
                 alt="Contact Us"
                 className="w-full h-48 sm:h-64 object-cover rounded-2xl shadow-lg"
+                width="800"
+                height="256"
+                loading="lazy"
               />
             </div>
 

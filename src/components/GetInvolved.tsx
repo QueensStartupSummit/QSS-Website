@@ -84,9 +84,12 @@ const GetInvolved = () => {
           <div className="order-1 lg:order-2 relative">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl sticky top-8">
               <img
-                src="summit.jpg"
+                src="/summit.webp"
                 alt="Get Involved with QSS"
                 className="w-full h-[500px] lg:h-[740px] object-cover transform hover:scale-105 transition-transform duration-700"
+                width="800"
+                height="740"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t via-transparent to-transparent" style={{ background: 'linear-gradient(to top, rgba(88, 186, 186, 0.6), transparent, transparent)' }}></div>
               <div className="absolute bottom-6 left-6 right-6">

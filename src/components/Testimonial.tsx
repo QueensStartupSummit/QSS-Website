@@ -29,9 +29,12 @@ const Testimonial = () => {
               <footer className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full shadow-lg overflow-hidden border-3 border-[#58baba]">
                   <img 
-                    src="/jacob-andreou.png" 
+                    src="/jacob-andreou.webp" 
                     alt="Jacob Andreou" 
                     className="w-full h-full object-cover object-center"
+                    width="96"
+                    height="96"
+                    loading="lazy"
                   />
                 </div>
                 <div className="text-center sm:text-left">

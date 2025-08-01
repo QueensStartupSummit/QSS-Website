@@ -22,8 +22,8 @@ Queen's Startup Summit is a student-run organization founded in 2013 in partners
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-org/queens-startup-summit.git
-   cd queens-startup-summit
+   git clone https://github.com/QueensStartupSummit/website.git
+   cd website
    ```
 
 2. **Install dependencies**

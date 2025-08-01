@@ -62,9 +62,12 @@ const About = () => {
 
           <div className="relative order-1 lg:order-2 w-full">
             <img
-              src="team.jpg"
+              src="/team.webp"
               alt="QSS Event"
               className="rounded-2xl shadow-2xl w-full h-[280px] sm:h-[320px] md:h-[400px] lg:h-[465px] object-cover"
+              width="800"
+              height="465"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent rounded-2xl"></div>
           </div>
