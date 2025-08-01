@@ -10,6 +10,7 @@ const Gallery = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
   const lightGalleryInstance = useRef<any>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -165,14 +166,34 @@ const Gallery = () => {
   const onTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(false);
+    // Pause auto-play during touch interaction
+    if (autoPlayIntervalRef.current) {
+      clearInterval(autoPlayIntervalRef.current);
+    }
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    if (!touchStart) return;
+    
+    const currentTouch = e.targetTouches[0].clientX;
+    setTouchEnd(currentTouch);
+    
+    // Set dragging state if user has moved significantly
+    const distance = Math.abs(touchStart - currentTouch);
+    if (distance > 10) {
+      setIsDragging(true);
+    }
   };
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    setIsDragging(false);
+    
+    if (!touchStart || !touchEnd) {
+      // Resume auto-play if no swipe occurred
+      setAutoPlayKey(prev => prev + 1);
+      return;
+    }
     
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
@@ -182,7 +203,14 @@ const Gallery = () => {
       nextSlide();
     } else if (isRightSwipe) {
       prevSlide();
+    } else {
+      // Resume auto-play if swipe wasn't significant enough
+      setAutoPlayKey(prev => prev + 1);
     }
+    
+    // Reset touch states
+    setTouchStart(null);
+    setTouchEnd(null);
   };
 
   // Lazy load LightGallery only when needed - with mobile optimizations
@@ -356,6 +384,7 @@ const Gallery = () => {
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
+            style={{ touchAction: 'pan-y pinch-zoom' }}
           >
             <div
               className="flickity-slider"
@@ -373,7 +402,7 @@ const Gallery = () => {
                     data-src={image.src}
                     data-thumb={image.thumb}
                     data-sub-html={`<p>QSS Event Photo</p>`}
-                    className="carousel-cell"
+                    className={`carousel-cell ${isDragging ? 'dragging' : ''}`}
                   >
                     <CarouselImage
                       src={image.thumb}
@@ -409,9 +438,12 @@ const Gallery = () => {
           {/* Mobile Touch Indicator and Progress */}
           {isMobile && (
             <div className="mobile-touch-indicator">
-              <p className="text-sm text-gray-500 text-center mt-4">
-                Swipe left or right to browse images
-              </p>
+              <div className="flex items-center justify-center mt-4 mb-2">
+                <div className="flex items-center text-sm text-gray-500 bg-gray-100 px-3 py-2 rounded-full">
+                  <span className="mr-2">👆</span>
+                  Swipe left or right to browse images
+                </div>
+              </div>
               <div className="flex justify-center mt-2 space-x-1">
                 {shuffledImages.slice(0, Math.min(5, shuffledImages.length)).map((_, index) => (
                   <div
@@ -436,15 +468,17 @@ const Gallery = () => {
             position: relative;
             max-width: 1400px;
             margin: 0 auto;
-            touch-action: pan-y; /* Allow vertical scrolling but handle horizontal touches */
+            touch-action: pan-y pinch-zoom; /* Allow vertical scrolling and pinch zoom but handle horizontal touches */
           }
 
           .main-carousel {
             overflow: hidden;
             border-radius: 12px;
             background: #f8f9fa;
-            touch-action: pan-y;
+            touch-action: pan-y pinch-zoom;
             user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
           }
 
           .flickity-slider {
@@ -471,6 +505,11 @@ const Gallery = () => {
 
           .carousel-cell:active {
             transform: ${isMobile ? 'scale(0.98)' : 'scale(1.05)'};
+          }
+
+          .carousel-cell.dragging {
+            transition: none;
+            transform: scale(0.98);
           }
 
           .carousel-cell img,
