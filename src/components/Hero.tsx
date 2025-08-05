@@ -29,7 +29,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-16 md:pt-20">
       {/* Background - optimized for mobile */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
@@ -41,27 +41,28 @@ const Hero = () => {
 
 
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-0">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-8 xl:py-12">
         {/* Mobile-first single column layout */}
-        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-12 lg:items-center">
+        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-12 lg:items-center min-h-[calc(100vh-8rem)] lg:min-h-[calc(100vh-6rem)]">
           {/* Content Section - mobile-first approach */}
-          <div className="w-full text-center lg:text-left lg:col-span-2 mb-8 lg:mb-0">
-            <div className="bg-white/98 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-2xl border border-white/20 p-4 sm:p-6 md:p-8 lg:p-10 text-gray-900 max-w-2xl mx-auto lg:mx-0 relative overflow-hidden">
+          <div className="w-full text-center lg:text-left lg:col-span-2 mb-8 lg:mb-0 flex items-center justify-center lg:justify-start">
+            <div className="bg-white/98 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-2xl border border-white/20 p-4 sm:p-6 md:p-6 lg:p-8 xl:p-10 text-gray-900 max-w-2xl mx-auto lg:mx-0 relative overflow-hidden">
               <div className="relative z-10">
                 {/* QSS Logo - responsive sizing */}
                 <div className="flex justify-center mb-4 md:mb-6">
                   <img
                     src="/qss-full-logo.webp"
                     alt="Queen's Startup Summit"
-                    className="h-28 sm:h-32 md:h-36 lg:h-36 xl:h-40 w-auto max-w-full"
+                    className="h-24 sm:h-28 md:h-32 lg:h-32 xl:h-36 w-auto max-w-full"
                     width="400"
                     height="292"
                     fetchPriority="high"
+                    loading="eager"
                   />
                 </div>
 
                 {/* Subtitle - improved mobile readability */}
-                <p className="text-base sm:text-lg md:text-xl mb-4 md:mb-6 text-gray-600 leading-relaxed font-light px-2 sm:px-0">
+                <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mb-3 md:mb-4 lg:mb-5 text-gray-600 leading-relaxed font-light px-2 sm:px-0">
                   Students supporting students getting into the startup world across Canada.
                   <span className="block mt-1 font-medium text-gray-700">
                     Any school, any year, any program.
@@ -69,7 +70,7 @@ const Hero = () => {
                 </p>
 
                 {/* Event Details - mobile-optimized layout */}
-                <div className="flex flex-col gap-3 md:gap-4 justify-center lg:justify-start items-center mb-6 md:mb-8">
+                <div className="flex flex-col gap-2 md:gap-3 lg:gap-3 justify-center lg:justify-start items-center mb-4 md:mb-6 lg:mb-6">
                   <div className="flex items-center text-sm sm:text-base text-gray-700 bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-gray-100 w-full sm:w-auto justify-center">
                     <Calendar className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-[#58baba] flex-shrink-0" />
                     <span className="font-medium">Nov 14-16, 2025</span>
@@ -81,7 +82,7 @@ const Hero = () => {
                 </div>
 
                 {/* Action Buttons - mobile-first touch targets (44px minimum) */}
-                <div className="flex flex-col gap-3 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center">
+                <div className="flex flex-col gap-2 sm:gap-3 lg:gap-3 justify-center lg:justify-start items-stretch sm:items-center">
                   <button className="group bg-gradient-to-r from-[#58baba] to-[#ddc946] text-white px-6 sm:px-8 py-3 sm:py-4 min-h-[44px] rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:from-[#ddc946] hover:to-[#58baba] flex items-center justify-center shadow-xl hover:shadow-2xl border-none cursor-pointer relative overflow-hidden w-full sm:w-auto">
                     <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     <span className="relative text-sm sm:text-base">Register Now</span>
@@ -100,9 +101,9 @@ const Hero = () => {
 
           {/* Badge3D Section - lazy loaded and conditionally rendered only on desktop */}
           {!isMobile && (
-            <div className="hidden lg:flex lg:col-span-3 justify-center items-center h-full w-full p-8">
-              <div className="relative w-full h-full max-w-full max-h-full flex justify-center items-center">
-                <div className="relative w-full h-full flex justify-center items-center">
+            <div className="hidden lg:flex lg:col-span-3 justify-center items-center h-full w-full p-4 lg:p-6 xl:p-8 relative overflow-visible">
+              <div className="relative w-full h-full max-w-full max-h-full flex justify-center items-center overflow-visible">
+                <div className="relative w-full h-full flex justify-center items-center overflow-visible" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
                   <Suspense fallback={
                     <div className="flex items-center justify-center w-full h-full">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
