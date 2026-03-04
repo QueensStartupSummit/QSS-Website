@@ -1,11 +1,11 @@
 <div align="center">
-  <img src="public/qss-full-logo.svg" alt="Queen's Startup Summit" height="60" />
+  <img src="public/qss-cube.svg" alt="Queen's Startup Summit" height="120" />
   <p>Canada's premier student-run entrepreneurship competition and conference.</p>
 </div>
 
 ## About
 
-Queen's Startup Summit (QSS) is a student-run organization founded in 2013 in partnership with the Queen's Innovation Connector. We support student entrepreneurship through competitions, workshops, and our flagship annual Summit — bringing together 600+ participants from 25+ schools across Canada.
+Queen's Startup Summit (QSS) is a student-run organization founded in 2013 in partnership with the Queen's Innovation Connector. We support student entrepreneurship through competitions, workshops, and our flagship annual Summit.
 
 ## Highlights
 
