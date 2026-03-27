@@ -11,19 +11,20 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     minify: 'terser',
-    chunkSizeWarningLimit: 1000, // Increase limit to 1MB to reduce warnings
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          // Split Three.js into separate chunks for better caching
-          'three-core': ['three'],
-          'three-fiber': ['@react-three/fiber'],
-          'three-drei': ['@react-three/drei'],
-          'three-rapier': ['@react-three/rapier'],
-          'three-meshline': ['meshline'],
-          ui: ['lucide-react'],
-          gallery: ['lightgallery']
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return
+
+          if (id.includes('@dimforge/rapier3d-compat')) return 'rapier-runtime'
+          if (id.includes('@react-three/rapier')) return 'three-rapier'
+          if (id.includes('@react-three/drei')) return 'three-drei'
+          if (id.includes('@react-three/fiber')) return 'three-fiber'
+          if (id.includes('meshline')) return 'three-meshline'
+          if (id.includes('lightgallery')) return 'gallery'
+          if (id.includes('lucide-react')) return 'ui'
+          if (id.includes('react-dom') || id.includes('react')) return 'vendor'
+          if (id.includes('three')) return 'three-core'
         }
       }
     }

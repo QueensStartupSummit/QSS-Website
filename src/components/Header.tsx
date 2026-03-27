@@ -25,6 +25,24 @@ const Header = () => {
     if (event.key === 'Escape') {
       setIsMenuOpen(false);
       menuButtonRef.current?.focus();
+      return;
+    }
+
+    // Trap focus within mobile menu
+    if (event.key === 'Tab' && mobileMenuRef.current) {
+      const focusableElements = mobileMenuRef.current.querySelectorAll<HTMLElement>(
+        'button, a, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement?.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement?.focus();
+      }
     }
   };
 
@@ -53,7 +71,7 @@ const Header = () => {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
             <img 
-              src="/qss-cube.webp" 
+              src="/qss-cube.svg" 
               alt="QSS Logo" 
               className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
               width="48"
@@ -69,16 +87,16 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
-            <button onClick={() => scrollToSection('home')} className="text-gray-700 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 rounded" style={{ '--tw-ring-color': '#58baba' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#58baba'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>Home</button>
-            <button onClick={() => scrollToSection('about')} className="text-gray-700 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 rounded" style={{ '--tw-ring-color': '#58baba' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#58baba'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>About</button>
-            <button onClick={() => scrollToSection('get-involved')} className="text-gray-700 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 rounded" style={{ '--tw-ring-color': '#58baba' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#58baba'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>Get Involved</button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 rounded" style={{ '--tw-ring-color': '#58baba' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#58baba'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>Gallery</button>
-            <button onClick={() => scrollToSection('sponsors')} className="text-gray-700 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 rounded" style={{ '--tw-ring-color': '#58baba' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#58baba'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>Sponsors</button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-700 transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 rounded" style={{ '--tw-ring-color': '#58baba' } as React.CSSProperties} onMouseEnter={(e) => e.currentTarget.style.color = '#58baba'} onMouseLeave={(e) => e.currentTarget.style.color = '#6b7280'}>Contact</button>
+            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Home</button>
+            <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">About</button>
+            <button onClick={() => scrollToSection('get-involved')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Get Involved</button>
+            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Gallery</button>
+            <button onClick={() => scrollToSection('sponsors')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Sponsors</button>
+            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Contact</button>
           </nav>
 
           <div className="hidden md:block">
-            <button className="text-white px-6 py-2 rounded-lg font-semibold transition-colors" style={{ backgroundColor: '#ddc946' }}>
+            <button className="text-white px-6 py-2 rounded-lg font-semibold transition-colors bg-[#ddc946]">
               Register Now
             </button>
           </div>
@@ -155,8 +173,7 @@ const Header = () => {
             </button>
             <div className="pt-2 border-t border-gray-200">
               <button 
-                className="w-full text-center px-4 py-3 min-h-[44px] text-white rounded-lg font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 hover:opacity-90 transition-opacity duration-200" 
-                style={{ backgroundColor: '#ddc946' }}
+                className="w-full text-center px-4 py-3 min-h-[44px] text-white rounded-lg font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 hover:opacity-90 transition-opacity duration-200 bg-[#ddc946]"
                 role="menuitem"
               >
                 Register Now

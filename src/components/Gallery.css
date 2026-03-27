@@ -1,0 +1,167 @@
+/* ── Embla Gallery Carousel ── */
+
+.gallery-embla-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-embla-viewport {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-embla-track {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.gallery-embla-slide {
+  flex: 0 0 500px;
+  min-width: 0;
+  padding: 0 8px;
+}
+
+.gallery-embla-slide-content {
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 350px;
+  transition: transform 0.3s ease;
+}
+
+.gallery-embla-slide-content:hover {
+  transform: scale(1.03);
+}
+
+/* Image display */
+.gallery-slide-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-slide-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.gallery-slide-placeholder {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+}
+
+/* Navigation buttons */
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(88, 186, 186, 0.85);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.gallery-nav:hover {
+  background: rgba(88, 186, 186, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-nav:active {
+  transform: translateY(-50%) scale(0.95);
+  background: rgba(88, 186, 186, 1);
+}
+
+.gallery-nav-prev {
+  left: -24px;
+}
+
+.gallery-nav-next {
+  right: -24px;
+}
+
+.gallery-progress {
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .gallery-embla-slide {
+    flex: 0 0 calc(100vw - 48px);
+    padding: 0 6px;
+  }
+
+  .gallery-embla-slide-content {
+    height: 250px;
+  }
+
+  .gallery-embla-slide-content:hover {
+    transform: none;
+  }
+
+  .gallery-nav {
+    width: 40px;
+    height: 40px;
+  }
+
+  .gallery-nav-prev {
+    left: 8px;
+  }
+
+  .gallery-nav-next {
+    right: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-embla-slide-content {
+    height: 220px;
+  }
+}
+
+/* ── LightGallery overrides ── */
+
+.lg-item img {
+  max-height: 80vh !important;
+  object-fit: contain;
+}
+
+@media (min-width: 769px) {
+  .lg-item img {
+    max-height: 600px !important;
+  }
+}
+
+.lg-thumb-outer {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .lg-thumb-outer {
+    display: none !important;
+  }
+
+  .lg-toolbar {
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  .lg-sub-html {
+    display: none !important;
+  }
+}

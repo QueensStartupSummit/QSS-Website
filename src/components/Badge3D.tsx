@@ -49,7 +49,11 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
   useEffect(() => {
     if (hovered) {
       document.body.style.cursor = dragged ? 'grabbing' : 'grab'
-      return () => void (document.body.style.cursor = 'auto')
+    } else {
+      document.body.style.cursor = 'auto'
+    }
+    return () => {
+      document.body.style.cursor = 'auto'
     }
   }, [hovered, dragged])
 

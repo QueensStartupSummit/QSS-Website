@@ -1,28 +1,13 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Footer = () => {
-  const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Mission', href: '#mission' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  const resources = [
-    { name: 'Registration', href: '#' },
-    { name: 'Schedule', href: '#' },
-    { name: 'Sponsors', href: '#' },
-    { name: 'Mentors', href: '#' },
-    { name: 'FAQ', href: '#' }
-  ];
-
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/QUStartupSummit/', label: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/qssummit/', label: 'Instagram' },
     { icon: Linkedin, href: 'https://www.linkedin.com/company/queens-startup-summit/', label: 'LinkedIn' }
   ];
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -45,13 +30,10 @@ const Footer = () => {
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <a
-                  key={index}
+                  key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="bg-gray-800 p-2 rounded-lg transition-colors"
-                  style={{ '--tw-bg-opacity': '1' } as React.CSSProperties}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#58baba'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#374151'}
+                  className="bg-gray-800 p-2 rounded-lg transition-colors hover:bg-[#58baba] focus:bg-[#58baba]"
                 >
                   <social.icon className="h-5 w-5" />
                 </a>
@@ -64,19 +46,19 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400">
-                <Mail className="h-5 w-5" style={{ color: '#58baba' }} />
+                <Mail className="h-5 w-5 text-[#58baba]" />
                 <span>partnerships@qssummit.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
-                <Mail className="h-5 w-5" style={{ color: '#58baba' }} />
+                <Mail className="h-5 w-5 text-[#58baba]" />
                 <span>delegates@qssummit.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
-                <Mail className="h-5 w-5" style={{ color: '#58baba' }} />
+                <Mail className="h-5 w-5 text-[#58baba]" />
                 <span>tech@qssummit.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
-                <MapPin className="h-5 w-5" style={{ color: '#58baba' }} />
+                <MapPin className="h-5 w-5 text-[#58baba]" />
                 <span>Queen's University, Kingston, ON</span>
               </div>
             </div>
@@ -87,7 +69,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Queen's Startup Summit. All rights reserved.
+              © {currentYear} Queen's Startup Summit. All rights reserved.
             </div>
           </div>
         </div>

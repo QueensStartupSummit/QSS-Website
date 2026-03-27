@@ -6,6 +6,7 @@ const Badge3D = lazy(() => import('./Badge3D'));
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [shouldRenderBadge, setShouldRenderBadge] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -17,6 +18,19 @@ const Hero = () => {
 
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setShouldRenderBadge(false);
+      return;
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      setShouldRenderBadge(true);
+    }, 750);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [isMobile]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -35,15 +49,15 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
         style={{
           backgroundImage: 'url(/Banner-hero.webp)',
-          backgroundPosition: isMobile ? 'center 30%' : 'center center'
+          backgroundPosition: isMobile ? 'center 40%' : 'center center'
         }}
       ></div>
 
 
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 lg:py-8 xl:py-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 md:py-12 lg:py-8 xl:py-12 pb-8 sm:pb-8">
         {/* Mobile-first single column layout */}
-        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-12 lg:items-center min-h-[calc(100vh-8rem)] lg:min-h-[calc(100vh-6rem)]">
+        <div className="flex flex-col lg:grid lg:grid-cols-5 lg:gap-8 xl:gap-12 lg:items-center lg:min-h-[calc(100vh-6rem)]">
           {/* Content Section - mobile-first approach */}
           <div className="w-full text-center lg:text-left lg:col-span-2 mb-8 lg:mb-0 flex items-center justify-center lg:justify-start">
             <div className="bg-white/98 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-2xl border border-white/20 p-4 sm:p-6 md:p-6 lg:p-8 xl:p-10 text-gray-900 max-w-2xl mx-auto lg:mx-0 relative overflow-hidden">
@@ -73,7 +87,7 @@ const Hero = () => {
                 <div className="flex flex-col gap-2 md:gap-3 lg:gap-3 justify-center lg:justify-start items-center mb-4 md:mb-6 lg:mb-6">
                   <div className="flex items-center text-sm sm:text-base text-gray-700 bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-gray-100 w-full sm:w-auto justify-center">
                     <Calendar className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-[#58baba] flex-shrink-0" />
-                    <span className="font-medium">Nov 14-16, 2025</span>
+                    <span className="font-medium">TBA</span>
                   </div>
                   <div className="flex items-center text-sm sm:text-base text-gray-700 bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-gray-100 w-full sm:w-auto justify-center">
                     <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-[#58baba] flex-shrink-0" />
@@ -104,13 +118,27 @@ const Hero = () => {
             <div className="hidden lg:flex lg:col-span-3 justify-center items-center h-full w-full p-4 lg:p-6 xl:p-8 relative overflow-visible">
               <div className="relative w-full h-full max-w-full max-h-full flex justify-center items-center overflow-visible">
                 <div className="relative w-full h-full flex justify-center items-center overflow-visible" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
-                  <Suspense fallback={
+                  {shouldRenderBadge ? (
+                    <Suspense fallback={
+                      <div className="flex items-center justify-center w-full h-full">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
+                      </div>
+                    }>
+                      <Badge3D />
+                    </Suspense>
+                  ) : (
                     <div className="flex items-center justify-center w-full h-full">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
+                      <div className="flex items-center justify-center rounded-[2rem] border border-white/50 bg-white/70 p-10 shadow-2xl">
+                        <img
+                          src="/qss-cube.svg"
+                          alt=""
+                          aria-hidden="true"
+                          className="h-40 w-40 opacity-80"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
-                  }>
-                    <Badge3D />
-                  </Suspense>
+                  )}
                 </div>
               </div>
             </div>

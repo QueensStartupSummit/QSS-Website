@@ -5,11 +5,11 @@ import About from './components/About';
 import Testimonial from './components/Testimonial';
 import GetInvolved from './components/GetInvolved';
 import Sponsors from './components/Sponsors';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 
-// Lazy load heavy components
+// Lazy load below-the-fold components
 const Gallery = lazy(() => import('./components/Gallery'));
+const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   return (
@@ -27,7 +27,13 @@ function App() {
         <Gallery />
       </Suspense>
       <Sponsors />
-      <Contact />
+      <Suspense fallback={
+        <div className="flex items-center justify-center py-20">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
+        </div>
+      }>
+        <Contact />
+      </Suspense>
       <Footer />
     </div>
   );

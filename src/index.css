@@ -1,5 +1,38 @@
 @import "tailwindcss";
 
+/* Fester font family */
+@font-face {
+  font-family: 'Fester';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Fester Semi-condensed Book'), url('/fonts/Fester Book.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fester';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Fester Semi-condensed Medium'), url('/fonts/Fester Medium.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fester';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Fester Semi-condensed Bold'), url('/fonts/Fester Bold.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Fester';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Fester Semi-condensed Heavy'), url('/fonts/Fester Heavy.woff') format('woff');
+  font-display: swap;
+}
+
 /* Essential CSS custom properties */
 :root {
   /* QSS Brand Colors */
@@ -10,6 +43,12 @@
   --qss-teal-dark: #4a9999;
   --qss-yellow-light: #e8d96b;
   --qss-yellow-dark: #c4b63d;
+  --mobile-text-base: 1rem;
+  --mobile-leading-normal: 1.5;
+  --mobile-radius: 0.75rem;
+  --mobile-duration: 0.2s;
+  --touch-target-min: 44px;
+  --mobile-space-md: 1rem;
 }
 
 /* Removed unused responsive custom properties */
@@ -37,6 +76,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: var(--mobile-text-base);
   line-height: var(--mobile-leading-normal);
+}
+
+/* Fester for headings and display text */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fester', sans-serif;
 }
 
 /* Mobile-first responsive image utilities */
@@ -93,8 +137,7 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
-/* Sec
-tion-specific background transitions for smooth visual flow */
+/* Section-specific background transitions for smooth visual flow */
 .section-transition-smooth {
   position: relative;
 }

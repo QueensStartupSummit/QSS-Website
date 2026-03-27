@@ -110,7 +110,7 @@ const Contact = () => {
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Get In
-            <span className="block" style={{ color: '#58baba' }}>Touch</span>
+            <span className="block text-[#58baba]">Touch</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions about QSS? Want to become a sponsor or mentor? We'd love to hear from you!
@@ -133,7 +133,7 @@ const Contact = () => {
               <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                    <svg className="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                   </div>
@@ -239,16 +239,15 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full text-white py-4 sm:py-3 px-6 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center touch-manipulation min-h-[44px] ${
-                  isSubmitting 
-                    ? 'opacity-70 cursor-not-allowed' 
+                className={`w-full text-white py-4 sm:py-3 px-6 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center touch-manipulation min-h-[44px] bg-[#ddc946] ${
+                  isSubmitting
+                    ? 'opacity-70 cursor-not-allowed'
                     : 'hover:opacity-90 active:scale-[0.98] hover:shadow-lg'
                 }`}
-                style={{ backgroundColor: '#ddc946' }}
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -280,17 +279,14 @@ const Contact = () => {
             <div className="space-y-4 sm:space-y-6">
               {contactInfo.map((info, index) => (
                 <a
-                  key={index}
+                  key={info.title}
                   href={info.action}
                   className="flex items-center p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all duration-200 group touch-manipulation min-h-[44px] active:scale-[0.99] hover:shadow-md"
                 >
-                  <div 
-                    className="p-3 rounded-lg mr-4 transition-all duration-200 flex-shrink-0" 
-                    style={{ backgroundColor: 'rgba(88, 186, 186, 0.1)' }} 
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(88, 186, 186, 0.2)'} 
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(88, 186, 186, 0.1)'}
+                  <div
+                    className="p-3 rounded-lg mr-4 transition-all duration-200 flex-shrink-0 bg-[#58baba]/10 group-hover:bg-[#58baba]/20"
                   >
-                    <info.icon className="h-6 w-6" style={{ color: '#58baba' }} />
+                    <info.icon className="h-6 w-6 text-[#58baba]" aria-hidden="true" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h4 className="font-semibold text-gray-900 text-sm sm:text-base">{info.title}</h4>
