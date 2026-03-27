@@ -17,14 +17,10 @@ export default defineConfig({
           if (!id.includes('node_modules')) return
 
           if (id.includes('@dimforge/rapier3d-compat')) return 'rapier-runtime'
-          if (id.includes('@react-three/rapier')) return 'three-rapier'
-          if (id.includes('@react-three/drei')) return 'three-drei'
-          if (id.includes('@react-three/fiber')) return 'three-fiber'
-          if (id.includes('meshline')) return 'three-meshline'
           if (id.includes('lightgallery')) return 'gallery'
           if (id.includes('lucide-react')) return 'ui'
+          if (id.includes('@react-three') || id.includes('meshline') || id.includes('three') || id.includes('zustand')) return 'three-bundle'
           if (id.includes('react-dom') || id.includes('react')) return 'vendor'
-          if (id.includes('three')) return 'three-core'
         }
       }
     }
