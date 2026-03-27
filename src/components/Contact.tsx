@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Send, AlertCircle } from 'lucide-react';
 
-// Replace with your Web3Forms access key from https://web3forms.com
-const WEB3FORMS_ACCESS_KEY = 'YOUR_ACCESS_KEY_HERE';
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
