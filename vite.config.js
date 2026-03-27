@@ -13,14 +13,10 @@ export default defineConfig({
     minify: 'terser',
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (!id.includes('node_modules')) return
-
-          if (id.includes('@dimforge/rapier3d-compat')) return 'rapier-runtime'
-          if (id.includes('lightgallery')) return 'gallery'
-          if (id.includes('lucide-react')) return 'ui'
-          if (id.includes('@react-three') || id.includes('meshline') || id.includes('three') || id.includes('zustand')) return 'three-bundle'
-          if (id.includes('react-dom') || id.includes('react')) return 'vendor'
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'gallery': ['lightgallery'],
+          'ui': ['lucide-react']
         }
       }
     }
