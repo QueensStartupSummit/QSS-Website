@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Send, AlertCircle } from 'lucide-react';
 
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -16,6 +18,7 @@ const Contact = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const validateField = (name: string, value: string) => {
     switch (name) {
@@ -48,15 +51,31 @@ const Contact = () => {
     if (hasErrors) return;
 
     setIsSubmitting(true);
-    
+    setSubmitError('');
+
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Form submitted:', formData);
-      setSubmitSuccess(true);
-      setFormData({ name: '', email: '', message: '' });
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Contact Form Submission from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitSuccess(true);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitError(result.message || 'Something went wrong. Please try again.');
+      }
     } catch (error) {
-      console.error('Form submission error:', error);
+      setSubmitError('Failed to send message. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -77,10 +96,9 @@ const Contact = () => {
       });
     }
 
-    // Clear success message when user starts editing
-    if (submitSuccess) {
-      setSubmitSuccess(false);
-    }
+    // Clear status messages when user starts editing
+    if (submitSuccess) setSubmitSuccess(false);
+    if (submitError) setSubmitError('');
   };
 
   const contactInfo = [
@@ -120,9 +138,14 @@ const Contact = () => {
         {/* Mobile-first layout: single column on mobile, two columns on large screens */}
         <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className="bg-gray-50 rounded-2xl p-6 sm:p-8 order-2 lg:order-1">
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 shadow-sm order-2 lg:order-1">
             <div className="mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Send us a message</h3>
+              <div className="flex gap-2 mb-3 sm:mb-4">
+                <div className="h-1 w-8 rounded-full bg-[#58baba]"></div>
+                <div className="h-1 w-16 rounded-full bg-[#ddc946]"></div>
+                <div className="h-1 w-8 rounded-full bg-[#1a1a1a]"></div>
+              </div>
               <p className="text-gray-600 text-sm sm:text-base">
                 Fill out the form below and we'll get back to you within 24 hours.
               </p>
@@ -146,6 +169,20 @@ const Contact = () => {
               </div>
             )}
 
+            {/* Error Message */}
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0">
+                    <AlertCircle className="h-5 w-5 text-red-400" aria-hidden="true" />
+                  </div>
+                  <div className="ml-3">
+                    <p className="text-sm font-medium text-red-800">{submitError}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -158,11 +195,10 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className={`w-full px-4 py-4 sm:py-3 text-base sm:text-sm border rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 touch-manipulation ${
-                    errors.name 
-                      ? 'border-red-300 focus:ring-red-200' 
-                      : 'border-gray-300 focus:ring-opacity-50'
+                    errors.name
+                      ? 'border-red-300 focus:ring-red-200'
+                      : 'border-gray-300 focus:ring-[#58baba]'
                   } hover:border-gray-400 active:scale-[0.99]`}
-                  style={{ '--tw-ring-color': errors.name ? '#fecaca' : '#58baba' } as React.CSSProperties}
                   placeholder="Your full name"
                   required
                   autoComplete="name"
@@ -188,11 +224,10 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className={`w-full px-4 py-4 sm:py-3 text-base sm:text-sm border rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 touch-manipulation ${
-                    errors.email 
-                      ? 'border-red-300 focus:ring-red-200' 
-                      : 'border-gray-300 focus:ring-opacity-50'
+                    errors.email
+                      ? 'border-red-300 focus:ring-red-200'
+                      : 'border-gray-300 focus:ring-[#58baba]'
                   } hover:border-gray-400 active:scale-[0.99]`}
-                  style={{ '--tw-ring-color': errors.email ? '#fecaca' : '#58baba' } as React.CSSProperties}
                   placeholder="your.email@example.com"
                   required
                   autoComplete="email"
@@ -218,11 +253,10 @@ const Contact = () => {
                   onChange={handleChange}
                   rows={5}
                   className={`w-full px-4 py-4 sm:py-3 text-base sm:text-sm border rounded-lg focus:ring-2 focus:border-transparent transition-all duration-200 resize-none touch-manipulation ${
-                    errors.message 
-                      ? 'border-red-300 focus:ring-red-200' 
-                      : 'border-gray-300 focus:ring-opacity-50'
+                    errors.message
+                      ? 'border-red-300 focus:ring-red-200'
+                      : 'border-gray-300 focus:ring-[#58baba]'
                   } hover:border-gray-400 active:scale-[0.99]`}
-                  style={{ '--tw-ring-color': errors.message ? '#fecaca' : '#58baba' } as React.CSSProperties}
                   placeholder="Tell us about your inquiry..."
                   required
                   // Mobile-specific attributes
