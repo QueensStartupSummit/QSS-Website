@@ -47,15 +47,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-gray-400">
                 <Mail className="h-5 w-5 text-[#58baba]" />
-                <span>partnerships@qssummit.com</span>
+                <span>sponsorships.qss@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
                 <Mail className="h-5 w-5 text-[#58baba]" />
-                <span>delegates@qssummit.com</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-400">
-                <Mail className="h-5 w-5 text-[#58baba]" />
-                <span>tech@qssummit.com</span>
+                <span>qssummit@clubs.queensu.ca</span>
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
                 <MapPin className="h-5 w-5 text-[#58baba]" />

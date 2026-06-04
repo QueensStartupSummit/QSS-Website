@@ -267,12 +267,13 @@ const Sponsors = () => {
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
               Join our community of forward-thinking organizations supporting the next generation of entrepreneurs.
             </p>
-            <button
+            <a
+              href="mailto:sponsorships.qss@gmail.com"
               className="sp-cta-btn inline-flex items-center gap-3 text-white px-7 py-3.5 rounded-xl font-bold text-lg shadow-lg bg-[#ddc946]"
             >
               Become a Sponsor
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
       </div>

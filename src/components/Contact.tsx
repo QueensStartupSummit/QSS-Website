@@ -104,21 +104,15 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Partnerships',
-      details: 'partnerships@qssummit.com',
-      action: 'mailto:partnerships@qssummit.com'
+      title: 'Sponsorships',
+      details: 'sponsorships.qss@gmail.com',
+      action: 'mailto:sponsorships.qss@gmail.com'
     },
     {
       icon: Mail,
-      title: 'Delegates',
-      details: 'delegates@qssummit.com',
-      action: 'mailto:delegates@qssummit.com'
-    },
-    {
-      icon: Mail,
-      title: 'Technical Support',
-      details: 'tech@qssummit.com',
-      action: 'mailto:tech@qssummit.com'
+      title: 'General Inquiries',
+      details: 'qssummit@clubs.queensu.ca',
+      action: 'mailto:qssummit@clubs.queensu.ca'
     },
   ];
 
