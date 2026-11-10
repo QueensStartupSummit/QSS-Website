@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
+import { REGISTER_URL } from '../constants';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,9 +97,14 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:block">
-            <button className="text-white px-6 py-2 rounded-lg font-semibold transition-colors bg-[#ddc946]">
+            <a
+              href={REGISTER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-white px-6 py-2 rounded-lg font-semibold transition-colors bg-[#ddc946]"
+            >
               Register Now
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -172,12 +178,16 @@ const Header = () => {
               Contact
             </button>
             <div className="pt-2 border-t border-gray-200">
-              <button 
-                className="w-full text-center px-4 py-3 min-h-[44px] text-white rounded-lg font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 hover:opacity-90 transition-opacity duration-200 bg-[#ddc946]"
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="block w-full text-center px-4 py-3 min-h-[44px] text-white rounded-lg font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 hover:opacity-90 transition-opacity duration-200 bg-[#ddc946]"
                 role="menuitem"
               >
                 Register Now
-              </button>
+              </a>
             </div>
           </div>
         </div>
