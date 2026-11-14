@@ -1,11 +1,23 @@
-import React from 'react';
-import { Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
+import React from "react";
+import { Mail, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Facebook, href: 'https://www.facebook.com/QUStartupSummit/', label: 'Facebook' },
-    { icon: Instagram, href: 'https://www.instagram.com/qssummit/', label: 'Instagram' },
-    { icon: Linkedin, href: 'https://www.linkedin.com/company/queens-startup-summit/', label: 'LinkedIn' }
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/QUStartupSummit/",
+      label: "Facebook",
+    },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/qssummit/",
+      label: "Instagram",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/queens-startup-summit/",
+      label: "LinkedIn",
+    },
   ];
   const currentYear = new Date().getFullYear();
 
@@ -16,16 +28,17 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="max-w-md">
             <div className="flex items-center space-x-2 mb-4">
-              <img 
-                src="/qss-cube-white.svg" 
-                alt="QSS Logo" 
-                className="h-8 w-8" 
-                style={{ imageRendering: 'crisp-edges' }}
+              <img
+                src="/qss-cube-white.svg"
+                alt="QSS Logo"
+                className="h-8 w-8"
+                style={{ imageRendering: "crisp-edges" }}
               />
               <h3 className="text-2xl font-bold">Queen's Startup Summit</h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
-            Students supporting students getting into the startup world across Canada. Any school, any year, any program.
+              Students supporting students getting into the startup world across Canada. Any school, any year, any
+              program.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (

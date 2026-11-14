@@ -1,60 +1,59 @@
-
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 const majorSponsors = [
   {
-    name: 'TD Invent',
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfauaXxYHkp4_mM2lpVzm-APkdZcBp6xUfHg&s',
-    website: 'https://tdinvent.td.com/',
+    name: "TD Invent",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfauaXxYHkp4_mM2lpVzm-APkdZcBp6xUfHg&s",
+    website: "https://tdinvent.td.com/",
   },
   {
-    name: 'Microsoft Reactor',
-    logo: 'https://learn.microsoft.com/en-us/shows/learn-live/azure-ai-helping-hand/media/reactors.png',
-    website: 'https://developer.microsoft.com/en-us/reactor/',
+    name: "Microsoft Reactor",
+    logo: "https://learn.microsoft.com/en-us/shows/learn-live/azure-ai-helping-hand/media/reactors.png",
+    website: "https://developer.microsoft.com/en-us/reactor/",
   },
 ];
 
 const sponsors = [
   {
-    name: 'CIBC Capital Markets',
-    logo: 'https://researchcentral.cibccm.com/assets/images/CIBC_LOB_H2L_CM_rgb.png',
-    website: 'https://www.cibc.com/en/commercial-banking/capital-markets',
+    name: "CIBC Capital Markets",
+    logo: "https://researchcentral.cibccm.com/assets/images/CIBC_LOB_H2L_CM_rgb.png",
+    website: "https://www.cibc.com/en/commercial-banking/capital-markets",
   },
   {
-    name: 'DMZ',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/DMZ_logoBlack-01.png',
-    website: 'https://dmz.torontomu.ca/',
+    name: "DMZ",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/DMZ_logoBlack-01.png",
+    website: "https://dmz.torontomu.ca/",
   },
   {
-    name: 'futurpreneur',
-    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxjRDrn4LmtXVfumKFiE5aRRqG60gltYSubw&s',
-    website: 'https://www.futurpreneur.ca/',
+    name: "futurpreneur",
+    logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxjRDrn4LmtXVfumKFiE5aRRqG60gltYSubw&s",
+    website: "https://www.futurpreneur.ca/",
   },
   {
-    name: 'CVCA',
-    logo: 'https://entrevestor.com/images/uploads/_entry/CVCA_logo_-_2019.jpg',
-    website: 'https://www.cvca.ca/',
+    name: "CVCA",
+    logo: "https://entrevestor.com/images/uploads/_entry/CVCA_logo_-_2019.jpg",
+    website: "https://www.cvca.ca/",
   },
   {
-    name: 'Secure Digital Markets',
-    logo: 'https://cdn.prod.website-files.com/6542c558790cbcc1ce789de0/6542c558790cbcc1ce789fcf_logo%20vertical%20-%20color%20black.svg',
-    website: 'https://www.securedigitalmarkets.com/',
+    name: "Secure Digital Markets",
+    logo: "https://cdn.prod.website-files.com/6542c558790cbcc1ce789de0/6542c558790cbcc1ce789fcf_logo%20vertical%20-%20color%20black.svg",
+    website: "https://www.securedigitalmarkets.com/",
   },
   {
-    name: 'Neo Financial',
-    logo: 'https://mms.businesswire.com/media/20241009155090/en/2266539/4/Neo-Financial-Logo_Black-Bordered_RGB.jpg',
-    website: 'https://www.neofinancial.com/',
+    name: "Neo Financial",
+    logo: "https://mms.businesswire.com/media/20241009155090/en/2266539/4/Neo-Financial-Logo_Black-Bordered_RGB.jpg",
+    website: "https://www.neofinancial.com/",
   },
   {
-    name: 'Ace Beverage Group',
-    logo: 'https://images.squarespace-cdn.com/content/v1/6153b2a0425ae037d899d513/1637011437524-1VTCSKYRW4L2ZRDIQTXC/ace.png',
-    website: 'https://www.acebeveragegroup.com/',
+    name: "Ace Beverage Group",
+    logo: "https://images.squarespace-cdn.com/content/v1/6153b2a0425ae037d899d513/1637011437524-1VTCSKYRW4L2ZRDIQTXC/ace.png",
+    website: "https://www.acebeveragegroup.com/",
   },
   {
-    name: 'Red Bull',
-    logo: 'https://www.svgrepo.com/download/303227/redbull-logo.svg',
-    website: 'https://www.redbull.com/',
+    name: "Red Bull",
+    logo: "https://www.svgrepo.com/download/303227/redbull-logo.svg",
+    website: "https://www.redbull.com/",
   },
 ];
 
@@ -65,12 +64,12 @@ const Sponsors = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -138,12 +137,9 @@ const Sponsors = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div
-          className={`text-center mb-14 md:mb-20 sp-animate ${isVisible ? 'sp-visible' : ''}`}
-        >
+        <div className={`text-center mb-14 md:mb-20 sp-animate ${isVisible ? "sp-visible" : ""}`}>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-tight">
-            Our{' '}
-            <span className="text-[#58baba]">Sponsors</span>
+            Our <span className="text-[#58baba]">Sponsors</span>
           </h2>
           <div className="flex items-center justify-center gap-2 mb-6">
             <div className="h-1 w-8 rounded-full bg-[#58baba]" />
@@ -151,17 +147,14 @@ const Sponsors = () => {
             <div className="h-1 w-8 rounded-full bg-[#1a1a1a]" />
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            We're proud to partner with industry leaders who share our vision of fostering
-            entrepreneurship and innovation among students.
+            We're proud to partner with industry leaders who share our vision of fostering entrepreneurship and
+            innovation among students.
           </p>
         </div>
 
         {/* Major Sponsors */}
         <div className="mb-16 md:mb-20">
-          <div
-            className={`sp-animate ${isVisible ? 'sp-visible' : ''}`}
-            style={{ animationDelay: '0.1s' }}
-          >
+          <div className={`sp-animate ${isVisible ? "sp-visible" : ""}`} style={{ animationDelay: "0.1s" }}>
             <h3 className="text-sm font-bold tracking-widest uppercase text-center mb-8 md:mb-12 text-[#58baba]">
               Major Sponsors
             </h3>
@@ -170,18 +163,13 @@ const Sponsors = () => {
             {majorSponsors.map((sponsor, index) => (
               <div
                 key={sponsor.name}
-                className={`sp-card-animate ${isVisible ? 'sp-visible' : ''}`}
+                className={`sp-card-animate ${isVisible ? "sp-visible" : ""}`}
                 style={{ animationDelay: `${0.15 + index * 0.1}s` }}
               >
-                <a
-                  href={sponsor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
+                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="block group">
                   <div
                     className="sp-logo-card bg-white rounded-2xl p-10 md:p-12 border border-gray-100"
-                    style={{ boxShadow: '0 2px 16px -4px rgba(0,0,0,0.06)' }}
+                    style={{ boxShadow: "0 2px 16px -4px rgba(0,0,0,0.06)" }}
                   >
                     <div className="h-40 flex items-center justify-center">
                       <img
@@ -201,10 +189,7 @@ const Sponsors = () => {
 
         {/* Supporting Sponsors */}
         <div>
-          <div
-            className={`sp-animate ${isVisible ? 'sp-visible' : ''}`}
-            style={{ animationDelay: '0.3s' }}
-          >
+          <div className={`sp-animate ${isVisible ? "sp-visible" : ""}`} style={{ animationDelay: "0.3s" }}>
             <h3 className="text-sm font-bold tracking-widest uppercase text-center mb-8 md:mb-12 text-[#1a1a1a]">
               Supporting Sponsors
             </h3>
@@ -213,30 +198,25 @@ const Sponsors = () => {
             {sponsors.map((sponsor, index) => (
               <div
                 key={sponsor.name}
-                className={`sp-card-animate ${isVisible ? 'sp-visible' : ''}`}
+                className={`sp-card-animate ${isVisible ? "sp-visible" : ""}`}
                 style={{ animationDelay: `${0.35 + index * 0.06}s` }}
               >
-                <a
-                  href={sponsor.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group"
-                >
+                <a href={sponsor.website} target="_blank" rel="noopener noreferrer" className="block group">
                   <div
                     className="sp-logo-card bg-white rounded-xl p-4 md:p-6 border border-gray-100 aspect-square flex items-center justify-center"
-                    style={{ boxShadow: '0 1px 8px -2px rgba(0,0,0,0.05)' }}
+                    style={{ boxShadow: "0 1px 8px -2px rgba(0,0,0,0.05)" }}
                   >
-                     <img
-                        src={sponsor.logo}
-                        alt={sponsor.name}
-                        className="h-48 w-48 object-contain group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => {
+                    <img
+                      src={sponsor.logo}
+                      alt={sponsor.name}
+                      className="h-48 w-48 object-contain group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => {
                         const target = e.currentTarget as HTMLImageElement;
-                        target.style.display = 'none';
+                        target.style.display = "none";
                         const placeholder = target.nextElementSibling as HTMLElement;
-                        if (placeholder) placeholder.classList.remove('hidden');
+                        if (placeholder) placeholder.classList.remove("hidden");
                       }}
                     />
                     <div className="hidden text-center">
@@ -251,14 +231,14 @@ const Sponsors = () => {
 
         {/* CTA */}
         <div
-          className={`mt-14 md:mt-20 sp-animate ${isVisible ? 'sp-visible' : ''}`}
-          style={{ animationDelay: '0.6s' }}
+          className={`mt-14 md:mt-20 sp-animate ${isVisible ? "sp-visible" : ""}`}
+          style={{ animationDelay: "0.6s" }}
         >
           <div
             className="rounded-2xl p-8 md:p-10 text-center border"
             style={{
-              backgroundColor: 'white',
-              borderColor: 'rgba(88, 186, 186, 0.2)',
+              backgroundColor: "white",
+              borderColor: "rgba(88, 186, 186, 0.2)",
             }}
           >
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 tracking-tight">

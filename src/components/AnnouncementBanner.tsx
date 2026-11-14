@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { ArrowRight, Sparkles, X } from 'lucide-react';
+import React, { useState } from "react";
+import { ArrowRight, Sparkles, X } from "lucide-react";
 
 // --- Event config: update these as details are confirmed ---
 const EVENT_NAME = "Queen's AI Startup Catalyst & Pitchathon";
-const EVENT_SHORT_NAME = 'AI Startup Catalyst';
-const EVENT_DATE = 'Nov 27, 2026';
-const EVENT_DATE_SHORT = 'Nov 27';
-const EVENT_TAGLINE = 'Founder panel, pitchathon & networking';
+const EVENT_SHORT_NAME = "AI Startup Catalyst";
+const EVENT_DATE = "Nov 27, 2026";
+const EVENT_DATE_SHORT = "Nov 27";
+const EVENT_TAGLINE = "Founder panel, pitchathon & networking";
 // Points to the on-site sign-up section if it exists, otherwise opens this URL.
-const SIGNUP_SECTION_ID = 'signup';
+const SIGNUP_SECTION_ID = "signup";
 const SIGNUP_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSerFeAHVnw3SQ22GNZE6w48x8H9zZ0gSP6pYNLOwz5vgJ5-EA/viewform';
+  "https://docs.google.com/forms/d/e/1FAIpQLSerFeAHVnw3SQ22GNZE6w48x8H9zZ0gSP6pYNLOwz5vgJ5-EA/viewform";
 
 const AnnouncementBanner = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -21,7 +21,7 @@ const AnnouncementBanner = () => {
     const section = document.getElementById(SIGNUP_SECTION_ID);
     if (section) {
       event.preventDefault();
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -47,8 +47,8 @@ const AnnouncementBanner = () => {
         <a
           href={isExternal ? SIGNUP_URL : `#${SIGNUP_SECTION_ID}`}
           onClick={isExternal ? undefined : handleSignUp}
-          target={isExternal ? '_blank' : undefined}
-          rel={isExternal ? 'noopener noreferrer' : undefined}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
           className="inline-flex items-center gap-1 rounded-full bg-[#ddc946] hover:bg-[#c4b63d] text-gray-900 font-semibold px-3 py-0.5 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#58baba]"
         >
           Sign Up<span className="hidden sm:inline">&nbsp;Now</span>

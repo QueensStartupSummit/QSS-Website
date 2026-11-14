@@ -1,29 +1,31 @@
-
-import React, { useEffect, useRef, useState } from 'react';
-import { BookOpen, Users, Lightbulb, GraduationCap, ArrowRight } from 'lucide-react';
-import { REGISTER_URL } from '../constants';
+import React, { useEffect, useRef, useState } from "react";
+import { BookOpen, Users, Lightbulb, GraduationCap, ArrowRight } from "lucide-react";
+import { REGISTER_URL } from "../constants";
 
 const opportunities = [
   {
     icon: BookOpen,
-    title: 'LEARN',
-    number: '01',
-    description: 'Develop technical and business skills through expert-led workshops run by our event partners, gaining hands-on experience with industry-relevant expertise.',
-    accent: '#58baba',
+    title: "LEARN",
+    number: "01",
+    description:
+      "Develop technical and business skills through expert-led workshops run by our event partners, gaining hands-on experience with industry-relevant expertise.",
+    accent: "#58baba",
   },
   {
     icon: Users,
-    title: 'NETWORK',
-    number: '02',
-    description: 'Forge lasting professional connections with company representatives from Canada\'s most successful businesses and expand your professional circle.',
-    accent: '#ddc946',
+    title: "NETWORK",
+    number: "02",
+    description:
+      "Forge lasting professional connections with company representatives from Canada's most successful businesses and expand your professional circle.",
+    accent: "#ddc946",
   },
   {
     icon: Lightbulb,
-    title: 'GET INSPIRED',
-    number: '03',
-    description: 'Hear from visionary leaders and innovative organizations across Canada\'s startup ecosystem to ignite your next breakthrough idea.',
-    accent: '#1a1a1a',
+    title: "GET INSPIRED",
+    number: "03",
+    description:
+      "Hear from visionary leaders and innovative organizations across Canada's startup ecosystem to ignite your next breakthrough idea.",
+    accent: "#1a1a1a",
   },
 ];
 
@@ -34,12 +36,12 @@ const GetInvolved = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -130,9 +132,7 @@ const GetInvolved = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div
-          className={`text-center mb-14 md:mb-20 gi-animate ${isVisible ? 'gi-visible' : ''}`}
-        >
+        <div className={`text-center mb-14 md:mb-20 gi-animate ${isVisible ? "gi-visible" : ""}`}>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-tight">
             Get Involved
             <span className="block text-[#58baba]">with QSS</span>
@@ -150,32 +150,26 @@ const GetInvolved = () => {
           <div className="lg:col-span-7 order-2 lg:order-1">
             {/* Delegate intro */}
             <div
-              className={`gi-card-animate ${isVisible ? 'gi-visible' : ''} mb-8`}
-              style={{ animationDelay: '0.15s' }}
+              className={`gi-card-animate ${isVisible ? "gi-visible" : ""} mb-8`}
+              style={{ animationDelay: "0.15s" }}
             >
               <div
                 className="rounded-2xl p-6 sm:p-8 border"
                 style={{
-                  backgroundColor: 'white',
-                  borderColor: 'rgba(88, 186, 186, 0.2)',
+                  backgroundColor: "white",
+                  borderColor: "rgba(88, 186, 186, 0.2)",
                 }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm bg-[#58baba]"
-                  >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm bg-[#58baba]">
                     <GraduationCap className="h-5 w-5 text-white" aria-hidden="true" />
                   </div>
-                  <h3
-                    className="text-xl sm:text-2xl font-bold tracking-tight text-[#58baba]"
-                  >
-                    BE A DELEGATE
-                  </h3>
+                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#58baba]">BE A DELEGATE</h3>
                 </div>
                 <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                  No matter your level of experience or background, we believe that everyone has the potential
-                  to be entrepreneurial and innovative. Queen's Startup Summit welcomes delegates from all years
-                  of academic study, faculties, and universities across Canada.
+                  No matter your level of experience or background, we believe that everyone has the potential to be
+                  entrepreneurial and innovative. Queen's Startup Summit welcomes delegates from all years of academic
+                  study, faculties, and universities across Canada.
                 </p>
               </div>
             </div>
@@ -185,7 +179,7 @@ const GetInvolved = () => {
               {opportunities.map((opp, index) => (
                 <div
                   key={opp.title}
-                  className={`gi-opp-card gi-card-animate ${isVisible ? 'gi-visible' : ''} bg-white rounded-xl p-5 sm:p-6 border border-gray-100/80`}
+                  className={`gi-opp-card gi-card-animate ${isVisible ? "gi-visible" : ""} bg-white rounded-xl p-5 sm:p-6 border border-gray-100/80`}
                   style={{
                     animationDelay: `${0.25 + index * 0.1}s`,
                   }}
@@ -202,23 +196,15 @@ const GetInvolved = () => {
                       >
                         <opp.icon className="h-5 w-5 text-white" aria-hidden="true" />
                       </div>
-                      <span
-                        className="gi-number text-xs font-bold"
-                        style={{ color: opp.accent, opacity: 0.6 }}
-                      >
+                      <span className="gi-number text-xs font-bold" style={{ color: opp.accent, opacity: 0.6 }}>
                         {opp.number}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h4
-                        className="font-bold text-lg sm:text-xl mb-1.5 tracking-tight"
-                        style={{ color: opp.accent }}
-                      >
+                      <h4 className="font-bold text-lg sm:text-xl mb-1.5 tracking-tight" style={{ color: opp.accent }}>
                         {opp.title}
                       </h4>
-                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                        {opp.description}
-                      </p>
+                      <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{opp.description}</p>
                     </div>
                   </div>
                 </div>
@@ -226,10 +212,7 @@ const GetInvolved = () => {
             </div>
 
             {/* CTA */}
-            <div
-              className={`gi-card-animate ${isVisible ? 'gi-visible' : ''}`}
-              style={{ animationDelay: '0.55s' }}
-            >
+            <div className={`gi-card-animate ${isVisible ? "gi-visible" : ""}`} style={{ animationDelay: "0.55s" }}>
               <a
                 href={REGISTER_URL}
                 target="_blank"
@@ -245,8 +228,8 @@ const GetInvolved = () => {
           {/* Right: Image */}
           <div className="lg:col-span-5 order-1 lg:order-2">
             <div
-              className={`gi-img-animate ${isVisible ? 'gi-visible' : ''} h-full`}
-              style={{ animationDelay: '0.2s' }}
+              className={`gi-img-animate ${isVisible ? "gi-visible" : ""} h-full`}
+              style={{ animationDelay: "0.2s" }}
             >
               <div className="gi-img-wrapper h-full">
                 <div className="relative overflow-hidden rounded-2xl shadow-xl h-full">
@@ -262,18 +245,17 @@ const GetInvolved = () => {
                   <div
                     className="absolute inset-0"
                     style={{
-                      background: 'linear-gradient(to top, rgba(88, 186, 186, 0.55) 0%, rgba(88, 186, 186, 0.1) 35%, transparent 60%)',
+                      background:
+                        "linear-gradient(to top, rgba(88, 186, 186, 0.55) 0%, rgba(88, 186, 186, 0.1) 35%, transparent 60%)",
                     }}
                   />
                   {/* Bottom card */}
                   <div className="absolute bottom-5 left-5 right-5">
                     <div
                       className="bg-white/95 backdrop-blur-sm rounded-xl p-4 border"
-                      style={{ borderColor: 'rgba(88, 186, 186, 0.2)' }}
+                      style={{ borderColor: "rgba(88, 186, 186, 0.2)" }}
                     >
-                      <p className="font-bold text-base text-[#58baba]">
-                        Join Delegates from Across Canada
-                      </p>
+                      <p className="font-bold text-base text-[#58baba]">Join Delegates from Across Canada</p>
                       <p className="text-gray-500 text-sm mt-0.5">
                         From a wide range of different faculties and universities.
                       </p>

@@ -33,10 +33,10 @@ Go to [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `bun run dev` | Start development server |
-| `bun run build` | Production build |
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `bun run dev`     | Start development server |
+| `bun run build`   | Production build         |
 | `bun run preview` | Preview production build |
 
 ## Contributing

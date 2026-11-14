@@ -1,56 +1,62 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/webp" href="/qss-cube.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queen's Startup Summit</title>
+    <meta
+      name="description"
+      content="Queen’s Startup Summit (QSS) is a student-run event that brings together innovative students from across the country for a fast-paced entrepreneurship competition open to all faculties and years."
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/webp" href="/qss-cube.webp" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Queen's Startup Summit</title>
-  <meta name="description"
-    content="Queen’s Startup Summit (QSS) is a student-run event that brings together innovative students from across the country for a fast-paced entrepreneurship competition open to all faculties and years." />
+    <!-- SEO Meta Tags -->
+    <meta
+      name="keywords"
+      content="Queen's Startup Summit, QSS, entrepreneurship, hackathon, startup competition, Queen's University, Kingston, Ontario, Canada"
+    />
+    <meta name="author" content="Queen's Startup Summit" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://qssummit.com" />
 
-  <!-- SEO Meta Tags -->
-  <meta name="keywords"
-    content="Queen's Startup Summit, QSS, entrepreneurship, hackathon, startup competition, Queen's University, Kingston, Ontario, Canada" />
-  <meta name="author" content="Queen's Startup Summit" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://qssummit.com" />
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Queen's Startup Summit" />
+    <meta
+      property="og:description"
+      content="Queen’s Startup Summit (QSS) is a student-run event that brings together innovative students from across the country for a fast-paced entrepreneurship competition open to all faculties and years."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://qssummit.com" />
+    <meta property="og:image" content="/social.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Queen's Startup Summit" />
 
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Queen's Startup Summit" />
-  <meta property="og:description"
-    content="Queen’s Startup Summit (QSS) is a student-run event that brings together innovative students from across the country for a fast-paced entrepreneurship competition open to all faculties and years." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://qssummit.com" />
-  <meta property="og:image" content="/social.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="Queen's Startup Summit" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Queen's Startup Summit" />
+    <meta
+      name="twitter:description"
+      content="Queen’s Startup Summit (QSS) is a student-run event that brings together innovative students from across the country for a fast-paced entrepreneurship competition open to all faculties and years."
+    />
+    <meta name="twitter:image" content="/social.png" />
 
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Queen's Startup Summit" />
-  <meta name="twitter:description"
-    content="Queen’s Startup Summit (QSS) is a student-run event that brings together innovative students from across the country for a fast-paced entrepreneurship competition open to all faculties and years." />
-  <meta name="twitter:image" content="/social.png" />
+    <!-- Preload primary font weight -->
+    <link rel="preload" href="/fonts/Fester Bold.woff" as="font" type="font/woff" crossorigin />
 
-  <!-- Preload primary font weight -->
-  <link rel="preload" href="/fonts/Fester Bold.woff" as="font" type="font/woff" crossorigin />
+    <!-- Preload LCP images for performance (highest priority first) -->
+    <link rel="preload" href="/qss-full-logo.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/Banner-hero.webp" as="image" type="image/webp" fetchpriority="high" />
 
-  <!-- Preload LCP images for performance (highest priority first) -->
-  <link rel="preload" href="/qss-full-logo.webp" as="image" type="image/webp" fetchpriority="high" />
-  <link rel="preload" href="/Banner-hero.webp" as="image" type="image/webp" fetchpriority="high" />
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/qss-cube.webp" as="image" type="image/webp" />
 
-  <!-- Preload critical resources -->
-  <link rel="preload" href="/qss-cube.webp" as="image" type="image/webp" />
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#ddc946" />
+  </head>
 
-  <!-- Theme color for mobile browsers -->
-  <meta name="theme-color" content="#ddc946" />
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

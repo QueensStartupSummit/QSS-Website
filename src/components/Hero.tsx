@@ -1,9 +1,9 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import { ArrowRight, Calendar, MapPin } from 'lucide-react';
-import { REGISTER_URL } from '../constants';
+import React, { useState, useEffect, lazy, Suspense } from "react";
+import { ArrowRight, Calendar, MapPin } from "lucide-react";
+import { REGISTER_URL } from "../constants";
 
 // Lazy load the 3D component to reduce initial bundle size
-const Badge3D = lazy(() => import('./Badge3D'));
+const Badge3D = lazy(() => import("./Badge3D"));
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -15,9 +15,9 @@ const Hero = () => {
     };
 
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
 
-    return () => window.removeEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
   useEffect(() => {
@@ -37,24 +37,25 @@ const Hero = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-28 md:pt-32">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-28 md:pt-32"
+    >
       {/* Background - optimized for mobile */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-center"
         style={{
-          backgroundImage: 'url(/Banner-hero.webp)',
-          backgroundPosition: isMobile ? 'center 40%' : 'center center'
+          backgroundImage: "url(/Banner-hero.webp)",
+          backgroundPosition: isMobile ? "center 40%" : "center center",
         }}
       ></div>
-
-
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 md:py-12 lg:py-8 xl:py-12 pb-8 sm:pb-8">
         {/* Mobile-first single column layout */}
@@ -79,9 +80,7 @@ const Hero = () => {
                 {/* Subtitle - improved mobile readability */}
                 <p className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mb-3 md:mb-4 lg:mb-5 text-gray-600 leading-relaxed font-light px-2 sm:px-0">
                   Students supporting students getting into the startup world across Canada.
-                  <span className="block mt-1 font-medium text-gray-700">
-                    Any school, any year, any program.
-                  </span>
+                  <span className="block mt-1 font-medium text-gray-700">Any school, any year, any program.</span>
                 </p>
 
                 {/* Event Details - mobile-optimized layout */}
@@ -110,7 +109,7 @@ const Hero = () => {
                   </a>
                   <button
                     className="group border-2 border-[#58baba] text-[#58baba] bg-transparent px-6 sm:px-8 py-3 sm:py-4 min-h-[44px] rounded-xl font-semibold transition-all duration-300 hover:bg-[#58baba] hover:text-white hover:shadow-lg cursor-pointer relative overflow-hidden w-full sm:w-auto"
-                    onClick={() => scrollToSection('about')}
+                    onClick={() => scrollToSection("about")}
                   >
                     <span className="relative text-sm sm:text-base">Learn More</span>
                   </button>
@@ -123,13 +122,18 @@ const Hero = () => {
           {!isMobile && (
             <div className="hidden lg:flex lg:col-span-3 justify-center items-center h-full w-full p-4 lg:p-6 xl:p-8 relative overflow-visible">
               <div className="relative w-full h-full max-w-full max-h-full flex justify-center items-center overflow-visible">
-                <div className="relative w-full h-full flex justify-center items-center overflow-visible" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
+                <div
+                  className="relative w-full h-full flex justify-center items-center overflow-visible"
+                  style={{ maxHeight: "calc(100vh - 12rem)" }}
+                >
                   {shouldRenderBadge ? (
-                    <Suspense fallback={
-                      <div className="flex items-center justify-center w-full h-full">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
-                      </div>
-                    }>
+                    <Suspense
+                      fallback={
+                        <div className="flex items-center justify-center w-full h-full">
+                          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#58baba]"></div>
+                        </div>
+                      }
+                    >
                       <Badge3D />
                     </Suspense>
                   ) : (
