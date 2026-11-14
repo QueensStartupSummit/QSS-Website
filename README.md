@@ -23,21 +23,21 @@ Queen's Startup Summit (QSS) is a student-run organization founded in 2013 in pa
 ```bash
 git clone https://github.com/QueensStartupSummit/website.git
 cd website
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Go to [http://localhost:3000](http://localhost:3000).
 
-> **Requirements:** Node.js 18+, npm or yarn
+> **Requirements:** [Bun](https://bun.sh)
 
 ## Scripts
 
 | Command | Description |
 | --- | --- |
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
+| `bun run dev` | Start development server |
+| `bun run build` | Production build |
+| `bun run preview` | Preview production build |
 
 ## Contributing
 
