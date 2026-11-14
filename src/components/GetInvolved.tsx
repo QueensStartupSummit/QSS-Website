@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { BookOpen, Users, Lightbulb, GraduationCap, ArrowRight } from 'lucide-react';
+import { REGISTER_URL } from '../constants';
 
 const opportunities = [
   {
@@ -229,12 +230,15 @@ const GetInvolved = () => {
               className={`gi-card-animate ${isVisible ? 'gi-visible' : ''}`}
               style={{ animationDelay: '0.55s' }}
             >
-              <button
-                className="gi-cta-btn flex items-center gap-3 text-white px-7 py-3.5 rounded-xl font-bold text-lg shadow-lg mx-auto lg:mx-0 bg-[#ddc946]"
+              <a
+                href={REGISTER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="gi-cta-btn flex w-fit items-center gap-3 text-white px-7 py-3.5 rounded-xl font-bold text-lg shadow-lg mx-auto lg:mx-0 bg-[#ddc946]"
               >
                 Register Now as a Delegate
                 <ArrowRight className="w-5 h-5" />
-              </button>
+              </a>
             </div>
           </div>
 
