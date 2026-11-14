@@ -261,6 +261,12 @@ const Gallery = () => {
 
   useEffect(() => {
     if (isVisible && !lightGalleryLoaded) loadLightGallery();
+  }, [isVisible, loadLightGallery, lightGalleryLoaded]);
+
+  // Destroy LightGallery only on unmount. (Keeping this cleanup in the effect above
+  // destroyed the instance as soon as lightGalleryLoaded flipped to true, so clicking
+  // a photo never opened the lightbox.)
+  useEffect(() => {
     return () => {
       if (lightGalleryInstance.current) {
         try {
@@ -269,7 +275,7 @@ const Gallery = () => {
         lightGalleryInstance.current = null;
       }
     };
-  }, [isVisible, loadLightGallery, lightGalleryLoaded]);
+  }, []);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
