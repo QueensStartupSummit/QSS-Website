@@ -16,7 +16,7 @@ Queen's Startup Summit (QSS) is a student-run organization founded in 2013 in pa
 
 ## Tech Stack
 
-[React 18](https://react.dev/) · [TypeScript](https://www.typescriptlang.org/) · [Vite 5](https://vitejs.dev/) · [Tailwind CSS 4](https://tailwindcss.com/) · [Three.js](https://threejs.org/) · [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+[React 19](https://react.dev/) · [TypeScript 7](https://www.typescriptlang.org/) · [Vite 8](https://vitejs.dev/) · [Tailwind 4](https://tailwindcss.com/) · [Three.js](https://threejs.org/) · [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
 
 ## Getting Started
 
