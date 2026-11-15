@@ -234,13 +234,7 @@ const Sponsors = () => {
           className={`mt-14 md:mt-20 sp-animate ${isVisible ? "sp-visible" : ""}`}
           style={{ animationDelay: "0.6s" }}
         >
-          <div
-            className="rounded-2xl p-8 md:p-10 text-center border"
-            style={{
-              backgroundColor: "white",
-              borderColor: "rgba(88, 186, 186, 0.2)",
-            }}
-          >
+          <div className="sponsor-cta-panel rounded-2xl p-8 md:p-10 text-center border">
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 tracking-tight">
               Interested in Sponsoring?
             </h3>

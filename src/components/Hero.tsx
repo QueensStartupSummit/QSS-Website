@@ -65,7 +65,7 @@ const Hero = () => {
             <div className="-translate-y-12 bg-white/98 backdrop-blur-xl rounded-2xl md:rounded-3xl shadow-2xl border border-white/20 p-4 sm:p-6 md:p-6 lg:p-8 xl:p-10 text-gray-900 max-w-2xl mx-auto lg:mx-0 relative overflow-hidden">
               <div className="relative z-10">
                 {/* QSS Logo - responsive sizing */}
-                <div className="flex justify-center mb-4 md:mb-6">
+                <div className="hero-logo-frame flex justify-center mb-4 md:mb-6">
                   <img
                     src="/qss-full-logo.webp"
                     alt="Queen's Startup Summit"

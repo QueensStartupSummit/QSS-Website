@@ -25,7 +25,7 @@ const opportunities = [
     number: "03",
     description:
       "Hear from visionary leaders and innovative organizations across Canada's startup ecosystem to ignite your next breakthrough idea.",
-    accent: "#1a1a1a",
+    accent: "var(--qss-neutral-accent)",
   },
 ];
 
@@ -153,13 +153,7 @@ const GetInvolved = () => {
               className={`gi-card-animate ${isVisible ? "gi-visible" : ""} mb-8`}
               style={{ animationDelay: "0.15s" }}
             >
-              <div
-                className="rounded-2xl p-6 sm:p-8 border"
-                style={{
-                  backgroundColor: "white",
-                  borderColor: "rgba(88, 186, 186, 0.2)",
-                }}
-              >
+              <div className="gi-delegate-panel rounded-2xl p-6 sm:p-8 border">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shadow-sm bg-[#58baba]">
                     <GraduationCap className="h-5 w-5 text-white" aria-hidden="true" />
@@ -192,7 +186,12 @@ const GetInvolved = () => {
                     <div className="flex-shrink-0 flex flex-col items-center gap-2">
                       <div
                         className="w-11 h-11 rounded-xl flex items-center justify-center shadow-sm"
-                        style={{ backgroundColor: opp.accent }}
+                        style={{
+                          backgroundColor:
+                            opp.accent === "var(--qss-neutral-accent)"
+                              ? "var(--qss-neutral-icon-background)"
+                              : opp.accent,
+                        }}
                       >
                         <opp.icon className="h-5 w-5 text-white" aria-hidden="true" />
                       </div>

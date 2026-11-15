@@ -1,9 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { REGISTER_URL } from "../constants";
 import AnnouncementBanner from "./AnnouncementBanner";
 
-const Header = () => {
+interface HeaderProps {
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
+}
+
+const ThemeToggle = ({ isDarkMode, onToggleTheme }: HeaderProps) => (
+  <button
+    type="button"
+    onClick={onToggleTheme}
+    className="text-gray-700 hover:text-[#58baba] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58baba] focus-visible:ring-offset-2 rounded-md p-3 min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
+    aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
+    title={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
+    aria-pressed={isDarkMode}
+  >
+    {isDarkMode ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
+  </button>
+);
+
+const Header = ({ isDarkMode, onToggleTheme }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -128,7 +146,8 @@ const Header = () => {
             </button>
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />
             <a
               href={REGISTER_URL}
               target="_blank"
@@ -140,7 +159,8 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-1">
+            <ThemeToggle isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />
             <button
               ref={menuButtonRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}

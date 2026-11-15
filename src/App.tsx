@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -11,10 +11,34 @@ import Footer from "./components/Footer";
 const Gallery = lazy(() => import("./components/Gallery"));
 const Contact = lazy(() => import("./components/Contact"));
 
+type Theme = "light" | "dark";
+
+const getInitialTheme = (): Theme => {
+  const savedTheme = window.localStorage.getItem("qss-theme");
+  if (savedTheme === "light" || savedTheme === "dark") return savedTheme;
+  return "light";
+};
+
 function App() {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.style.colorScheme = theme;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", theme === "dark" ? "#111827" : "#ddc946");
+  }, [theme]);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    window.localStorage.setItem("qss-theme", nextTheme);
+    setTheme(nextTheme);
+  };
+
   return (
     <div className="min-h-screen">
-      <Header />
+      <Header isDarkMode={theme === "dark"} onToggleTheme={toggleTheme} />
       <Hero />
       <About />
       <Testimonial />
