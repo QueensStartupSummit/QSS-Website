@@ -1,9 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X } from 'lucide-react';
-import { REGISTER_URL } from '../constants';
-import AnnouncementBanner from './AnnouncementBanner';
+import React, { useState, useEffect, useRef } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { REGISTER_URL } from "../constants";
+import AnnouncementBanner from "./AnnouncementBanner";
 
-const Header = () => {
+interface HeaderProps {
+  isDarkMode: boolean;
+  onToggleTheme: () => void;
+}
+
+const ThemeToggle = ({ isDarkMode, onToggleTheme }: HeaderProps) => (
+  <button
+    type="button"
+    onClick={onToggleTheme}
+    className="text-gray-700 hover:text-[#58baba] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#58baba] focus-visible:ring-offset-2 rounded-md p-3 min-h-[44px] min-w-[44px] flex items-center justify-center transition-colors"
+    aria-label={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
+    title={`Switch to ${isDarkMode ? "light" : "dark"} mode`}
+    aria-pressed={isDarkMode}
+  >
+    {isDarkMode ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
+  </button>
+);
+
+const Header = ({ isDarkMode, onToggleTheme }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -11,9 +29,9 @@ const Header = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
     // Close mobile menu after navigation
@@ -24,16 +42,16 @@ const Header = () => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (!isMenuOpen) return;
 
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       setIsMenuOpen(false);
       menuButtonRef.current?.focus();
       return;
     }
 
     // Trap focus within mobile menu
-    if (event.key === 'Tab' && mobileMenuRef.current) {
+    if (event.key === "Tab" && mobileMenuRef.current) {
       const focusableElements = mobileMenuRef.current.querySelectorAll<HTMLElement>(
-        'button, a, [tabindex]:not([tabindex="-1"])'
+        'button, a, [tabindex]:not([tabindex="-1"])',
       );
       const firstElement = focusableElements[0];
       const lastElement = focusableElements[focusableElements.length - 1];
@@ -61,9 +79,9 @@ const Header = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isMenuOpen]);
 
@@ -73,33 +91,73 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-2">
-            <img 
-              src="/qss-cube.svg" 
-              alt="QSS Logo" 
+            <img
+              src="/qss-cube.svg"
+              alt="QSS Logo"
               className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12"
               width="48"
               height="48"
               loading="eager"
-              style={{ imageRendering: 'crisp-edges' }}
+              style={{ imageRendering: "crisp-edges" }}
             />
             <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900">
               <span className="sm:hidden">QSS</span>
               <span className="hidden md:inline">Queen's Startup Summit</span>
             </h1>
           </div>
-          
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex md:space-x-4 lg:space-x-6 xl:space-x-8 md:text-sm lg:text-base"role="navigation" aria-label="Main navigation">
-            <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Home</button>
-            <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">About</button>
-            <button onClick={() => scrollToSection('get-involved')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Get Involved</button>
-            <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Gallery</button>
-            <button onClick={() => scrollToSection('sponsors')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Sponsors</button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Contact</button>
-            <button onClick={() => scrollToSection('schedule')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded whitespace-nowrap">Event Schedule</button>
+          <nav
+            className="hidden md:flex md:space-x-4 lg:space-x-6 xl:space-x-8 md:text-sm lg:text-base"
+            role="navigation"
+            aria-label="Main navigation"
+          >
+            <button
+              onClick={() => scrollToSection("home")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection("get-involved")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded"
+            >
+              Get Involved
+            </button>
+            <button
+              onClick={() => scrollToSection("gallery")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded"
+            >
+              Gallery
+            </button>
+            <button
+              onClick={() => scrollToSection("sponsors")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded"
+            >
+              Sponsors
+            </button>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded"
+            >
+              Contact
+            </button>
+            <button
+              onClick={() => scrollToSection("schedule")}
+              className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded whitespace-nowrap"
+            >
+              Event Schedule
+            </button>
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />
             <a
               href={REGISTER_URL}
               target="_blank"
@@ -111,7 +169,8 @@ const Header = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-1">
+            <ThemeToggle isDarkMode={isDarkMode} onToggleTheme={onToggleTheme} />
             <button
               ref={menuButtonRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -127,61 +186,61 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div 
+        <div
           className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isMenuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
+            isMenuOpen ? "max-h-[32rem] opacity-100" : "max-h-0 opacity-0"
           }`}
           id="mobile-menu"
-          role="navigation" 
+          role="navigation"
           aria-label="Mobile navigation"
           onKeyDown={handleKeyDown}
           ref={mobileMenuRef}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t shadow-lg">
-            <button 
-              onClick={() => scrollToSection('home')} 
+            <button
+              onClick={() => scrollToSection("home")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >
               Home
             </button>
-            <button 
-              onClick={() => scrollToSection('about')} 
+            <button
+              onClick={() => scrollToSection("about")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >
               About
             </button>
-            <button 
-              onClick={() => scrollToSection('get-involved')} 
+            <button
+              onClick={() => scrollToSection("get-involved")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >
               Get Involved
             </button>
-            <button 
-              onClick={() => scrollToSection('gallery')} 
+            <button
+              onClick={() => scrollToSection("gallery")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >
               Gallery
             </button>
-            <button 
-              onClick={() => scrollToSection('sponsors')} 
+            <button
+              onClick={() => scrollToSection("sponsors")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >
               Sponsors
             </button>
-            <button 
-              onClick={() => scrollToSection('contact')} 
+            <button
+              onClick={() => scrollToSection("contact")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >
               Contact
             </button>
             <button
-              onClick={() => scrollToSection('schedule')}
+              onClick={() => scrollToSection("schedule")}
               className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
               role="menuitem"
             >

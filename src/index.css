@@ -2,34 +2,42 @@
 
 /* Fester font family */
 @font-face {
-  font-family: 'Fester';
+  font-family: "Fester";
   font-style: normal;
   font-weight: 300;
-  src: local('Fester Semi-condensed Book'), url('/fonts/Fester Book.woff') format('woff');
+  src:
+    local("Fester Semi-condensed Book"),
+    url("/fonts/Fester Book.woff") format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Fester';
+  font-family: "Fester";
   font-style: normal;
   font-weight: 500;
-  src: local('Fester Semi-condensed Medium'), url('/fonts/Fester Medium.woff') format('woff');
+  src:
+    local("Fester Semi-condensed Medium"),
+    url("/fonts/Fester Medium.woff") format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Fester';
+  font-family: "Fester";
   font-style: normal;
   font-weight: 700;
-  src: local('Fester Semi-condensed Bold'), url('/fonts/Fester Bold.woff') format('woff');
+  src:
+    local("Fester Semi-condensed Bold"),
+    url("/fonts/Fester Bold.woff") format("woff");
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Fester';
+  font-family: "Fester";
   font-style: normal;
   font-weight: 900;
-  src: local('Fester Semi-condensed Heavy'), url('/fonts/Fester Heavy.woff') format('woff');
+  src:
+    local("Fester Semi-condensed Heavy"),
+    url("/fonts/Fester Heavy.woff") format("woff");
   font-display: swap;
 }
 
@@ -43,6 +51,8 @@
   --qss-teal-dark: #4a9999;
   --qss-yellow-light: #e8d96b;
   --qss-yellow-dark: #c4b63d;
+  --qss-neutral-accent: #1a1a1a;
+  --qss-neutral-icon-background: #1a1a1a;
   --mobile-text-base: 1rem;
   --mobile-leading-normal: 1.5;
   --mobile-radius: 0.75rem;
@@ -69,9 +79,9 @@ body,
 
 body {
   background-color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: var(--mobile-text-base);
@@ -79,8 +89,13 @@ body {
 }
 
 /* Fester for headings and display text */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fester', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fester", sans-serif;
 }
 
 /* Mobile-first responsive image utilities */
@@ -143,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-transition-smooth::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -2px;
   left: 0;
@@ -154,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-transition-smooth::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -162,6 +177,132 @@ h1, h2, h3, h4, h5, h6 {
   height: 4px;
   background: linear-gradient(to right, transparent, rgba(221, 201, 70, 0.1), transparent);
   z-index: 1;
+}
+
+html.dark {
+  color-scheme: dark;
+  background-color: #111827;
+  --qss-neutral-accent: #e5e7eb;
+  --qss-neutral-icon-background: #4a9999;
+}
+
+html.dark body,
+html.dark #root {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+html.dark header {
+  background-color: #111827;
+}
+
+html.dark section {
+  background-color: #111827;
+  background-image: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #f3f4f6;
+}
+
+html.dark #home::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(17, 24, 39, 0.45);
+  pointer-events: none;
+}
+
+html.dark .hero-logo-frame {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+}
+
+html.dark header img[alt="QSS Logo"] {
+  padding: 2px;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+html.dark .bg-white,
+html.dark [class~="bg-white/70"],
+html.dark [class~="bg-white/95"],
+html.dark [class~="bg-white/98"] {
+  background-color: #1f2937;
+}
+
+html.dark [class~="bg-gray-50"],
+html.dark [class~="bg-gray-100"] {
+  background-color: #1f2937;
+}
+
+html.dark .text-gray-900 {
+  color: #f9fafb;
+}
+
+html.dark .text-gray-800,
+html.dark .text-gray-700 {
+  color: #e5e7eb;
+}
+
+html.dark .text-gray-600 {
+  color: #cbd5e1;
+}
+
+html.dark .text-gray-500,
+html.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+html.dark .border-gray-100,
+html.dark [class~="border-gray-100/80"],
+html.dark .border-gray-200,
+html.dark [class~="border-white/20"],
+html.dark [class~="border-white/50"] {
+  border-color: #374151;
+}
+
+html.dark [class~="bg-[#ddc946]"] {
+  color: #111827;
+}
+
+html.dark #sponsors .sp-logo-card {
+  background-color: #fff;
+  border-color: #e5e7eb;
+}
+
+.sponsor-cta-panel {
+  background-color: #fff;
+  border-color: rgba(88, 186, 186, 0.2);
+}
+
+html.dark .sponsor-cta-panel {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.gi-delegate-panel {
+  background-color: #fff;
+  border-color: rgba(88, 186, 186, 0.2);
+}
+
+html.dark .gi-delegate-panel {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+html.dark input,
+html.dark textarea {
+  background-color: #1f2937;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #9ca3af;
 }
 
 /* Mobile-optimized section spacing */
@@ -190,7 +331,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-about-flow {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(243, 244, 246, 1) 0%,
     rgba(249, 250, 251, 1) 50%,
     rgba(255, 255, 255, 1) 100%
@@ -198,7 +340,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-testimonial-flow {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(249, 250, 251, 1) 50%,
     rgba(243, 244, 246, 1) 100%
@@ -206,7 +349,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-getinvolved-flow {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(243, 244, 246, 1) 0%,
     rgba(255, 255, 255, 1) 50%,
     rgba(249, 250, 251, 1) 100%
@@ -214,7 +358,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-gallery-flow {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(249, 250, 251, 1) 0%,
     rgba(243, 244, 246, 1) 50%,
     rgba(255, 255, 255, 1) 100%
@@ -222,7 +367,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-sponsors-flow {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(255, 255, 255, 1) 0%,
     rgba(249, 250, 251, 1) 50%,
     rgba(243, 244, 246, 1) 100%
@@ -230,7 +376,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-contact-flow {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(
+    135deg,
     rgba(243, 244, 246, 1) 0%,
     rgba(249, 250, 251, 1) 50%,
     rgba(255, 255, 255, 1) 100%
@@ -248,13 +395,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .focus-enhanced:focus {
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(88, 186, 186, 0.3),
     0 0 0 1px rgba(88, 186, 186, 0.5);
 }
 
 .focus-enhanced:focus-visible {
-  box-shadow: 
+  box-shadow:
     0 0 0 3px rgba(88, 186, 186, 0.3),
     0 0 0 1px rgba(88, 186, 186, 0.5);
 }

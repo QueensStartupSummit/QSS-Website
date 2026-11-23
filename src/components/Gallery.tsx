@@ -1,49 +1,112 @@
-import React, { useState, useEffect, useRef, useCallback, memo } from 'react';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import './Gallery.css';
+import React, { useState, useEffect, useRef, useCallback, memo } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import "./Gallery.css";
 
 const allImages = [
-  { src: '/gallery/qss-break-time-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-dinner-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-mentor-presentation-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-networking-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-speaker-panel-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-symposium-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-symposium2-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-day1-symposium3-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-exec-party-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-exec-party2-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-executive-presentation-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-executive-presentation2-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-executives-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-final-results-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-final-results2-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-first-place-winners-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-first-place-winners-startup-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-first-place-winners-vc-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-opening-final-day-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-opening-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-second-place-winners-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-second-place-winners-startup-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-second-place-winners-vc-2024.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-speaker-presentation-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-sponsor-presentation-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-sponsor-presentation2-pre2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-summit-2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-summit-exec-team-2021.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations10-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations2-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations3-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations4-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations5-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations6-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations7-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations8-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-team-final-presentations9-2022.webp', alt: 'QSS Event Photo' },
-  { src: '/gallery/qss-third-place-winners-2022.webp', alt: 'QSS Event Photo' },
+  { src: "/gallery/qss-break-time-pre2021.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-day1-dinner-2022.webp", alt: "QSS Event Photo" },
+  {
+    src: "/gallery/qss-day1-mentor-presentation-2024.webp",
+    alt: "QSS Event Photo",
+  },
+  { src: "/gallery/qss-day1-networking-2024.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-day1-speaker-panel-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-day1-symposium-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-day1-symposium2-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-day1-symposium3-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-exec-party-pre2021.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-exec-party2-pre2021.webp", alt: "QSS Event Photo" },
+  {
+    src: "/gallery/qss-executive-presentation-pre2021.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-executive-presentation2-pre2021.webp",
+    alt: "QSS Event Photo",
+  },
+  { src: "/gallery/qss-executives-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-final-results-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-final-results2-2022.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-first-place-winners-2022.webp", alt: "QSS Event Photo" },
+  {
+    src: "/gallery/qss-first-place-winners-startup-2024.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-first-place-winners-vc-2024.webp",
+    alt: "QSS Event Photo",
+  },
+  { src: "/gallery/qss-opening-final-day-2024.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-opening-pre2021.webp", alt: "QSS Event Photo" },
+  {
+    src: "/gallery/qss-second-place-winners-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-second-place-winners-startup-2024.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-second-place-winners-vc-2024.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-speaker-presentation-pre2021.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-sponsor-presentation-pre2021.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-sponsor-presentation2-pre2021.webp",
+    alt: "QSS Event Photo",
+  },
+  { src: "/gallery/qss-summit-2021.webp", alt: "QSS Event Photo" },
+  { src: "/gallery/qss-summit-exec-team-2021.webp", alt: "QSS Event Photo" },
+  {
+    src: "/gallery/qss-team-final-presentations-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations10-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations2-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations3-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations4-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations5-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations6-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations7-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations8-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  {
+    src: "/gallery/qss-team-final-presentations9-2022.webp",
+    alt: "QSS Event Photo",
+  },
+  { src: "/gallery/qss-third-place-winners-2022.webp", alt: "QSS Event Photo" },
 ];
 
 const TOTAL = allImages.length;
@@ -67,7 +130,7 @@ const CarouselImage = memo(({ src, alt }: { src: string; alt: string }) => {
         className="gallery-slide-img"
         decoding="async"
         loading="lazy"
-        fetchPriority={loaded ? 'high' : 'low'}
+        fetchPriority={loaded ? "high" : "low"}
         onLoad={() => setLoaded(true)}
         style={{ opacity: loaded ? 1 : 0 }}
       />
@@ -75,7 +138,7 @@ const CarouselImage = memo(({ src, alt }: { src: string; alt: string }) => {
     </div>
   );
 });
-CarouselImage.displayName = 'CarouselImage';
+CarouselImage.displayName = "CarouselImage";
 
 const Gallery = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -83,12 +146,15 @@ const Gallery = () => {
   const [lightGalleryLoaded, setLightGalleryLoaded] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const lgContainerRef = useRef<HTMLDivElement>(null);
-  const lightGalleryInstance = useRef<{ openGallery: (index: number) => void; destroy: () => void } | null>(null);
+  const lightGalleryInstance = useRef<{
+    openGallery: (index: number) => void;
+    destroy: () => void;
+  } | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       loop: true,
-      align: 'center',
+      align: "center",
       slidesToScroll: 1,
       containScroll: false,
       dragFree: true,
@@ -99,7 +165,7 @@ const Gallery = () => {
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),
-    ]
+    ],
   );
 
   // Track selected slide for progress indicator + preloading
@@ -110,13 +176,16 @@ const Gallery = () => {
       setSelectedIndex(idx);
       // Preload nearby images
       for (let i = -2; i <= 5; i++) {
-        const target = ((idx + i) % TOTAL + TOTAL) % TOTAL;
-        preloadImage(allImages[target].src);
+        const target = (((idx + i) % TOTAL) + TOTAL) % TOTAL;
+        const image = allImages[target];
+        if (image) preloadImage(image.src);
       }
     };
-    emblaApi.on('select', onSelect);
+    emblaApi.on("select", onSelect);
     onSelect();
-    return () => { emblaApi.off('select', onSelect); };
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
 
   useEffect(() => {
@@ -129,12 +198,12 @@ const Gallery = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '200px' }
+      { threshold: 0.1, rootMargin: "200px" },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -144,21 +213,23 @@ const Gallery = () => {
   const loadLightGallery = useCallback(async () => {
     if (lightGalleryLoaded || !isVisible) return;
     try {
-      const { default: lightGallery } = await import('lightgallery');
-      const lgThumbnail = await import('lightgallery/plugins/thumbnail');
-      const lgZoom = await import('lightgallery/plugins/zoom');
-      await import('lightgallery/css/lightgallery.css');
-      await import('lightgallery/css/lg-zoom.css');
-      await import('lightgallery/css/lg-thumbnail.css');
+      const { default: lightGallery } = await import("lightgallery");
+      const lgThumbnail = await import("lightgallery/plugins/thumbnail");
+      const lgZoom = await import("lightgallery/plugins/zoom");
+      await import("lightgallery/css/lightgallery.css");
+      await import("lightgallery/css/lg-zoom.css");
+      await import("lightgallery/css/lg-thumbnail.css");
 
       if (lgContainerRef.current) {
         if (lightGalleryInstance.current) {
-          try { lightGalleryInstance.current.destroy(); } catch {}
+          try {
+            lightGalleryInstance.current.destroy();
+          } catch {}
           lightGalleryInstance.current = null;
         }
         const isMobile = window.innerWidth < 768;
         lightGalleryInstance.current = lightGallery(lgContainerRef.current, {
-          selector: '.gallery-lg-item',
+          selector: ".gallery-lg-item",
           plugins: [lgThumbnail.default, lgZoom.default],
           thumbnail: !isMobile,
           animateThumb: !isMobile,
@@ -174,7 +245,7 @@ const Gallery = () => {
           loop: true,
           preload: isMobile ? 1 : 2,
           pager: false,
-          galleryId: 'qss-gallery',
+          galleryId: "qss-gallery",
           mobileSettings: {
             controls: true,
             showCloseIcon: true,
@@ -198,7 +269,9 @@ const Gallery = () => {
   useEffect(() => {
     return () => {
       if (lightGalleryInstance.current) {
-        try { lightGalleryInstance.current.destroy(); } catch {}
+        try {
+          lightGalleryInstance.current.destroy();
+        } catch {}
         lightGalleryInstance.current = null;
       }
     };
@@ -230,8 +303,7 @@ const Gallery = () => {
         {/* Header */}
         <div className="text-center mb-14 md:mb-20">
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-5 tracking-tight leading-tight">
-            Event{' '}
-            <span className="text-[#58baba]">Gallery</span>
+            Event <span className="text-[#58baba]">Gallery</span>
           </h2>
           <div className="flex items-center justify-center gap-2 mb-6">
             <div className="h-1 w-8 rounded-full bg-[#58baba]" />
@@ -266,18 +338,10 @@ const Gallery = () => {
           </div>
 
           {/* Nav buttons — desktop only */}
-          <button
-            onClick={scrollPrev}
-            className="gallery-nav gallery-nav-prev"
-            aria-label="Previous image"
-          >
+          <button onClick={scrollPrev} className="gallery-nav gallery-nav-prev" aria-label="Previous image">
             <ChevronLeft className="w-6 h-6" />
           </button>
-          <button
-            onClick={scrollNext}
-            className="gallery-nav gallery-nav-next"
-            aria-label="Next image"
-          >
+          <button onClick={scrollNext} className="gallery-nav gallery-nav-next" aria-label="Next image">
             <ChevronRight className="w-6 h-6" />
           </button>
 
@@ -290,7 +354,7 @@ const Gallery = () => {
         </div>
 
         {/* Hidden container for LightGallery data */}
-        <div ref={lgContainerRef} style={{ display: 'none' }}>
+        <div ref={lgContainerRef} style={{ display: "none" }}>
           {allImages.map((image) => (
             <a
               key={image.src}

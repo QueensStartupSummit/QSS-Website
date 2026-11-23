@@ -16,28 +16,28 @@ Queen's Startup Summit (QSS) is a student-run organization founded in 2013 in pa
 
 ## Tech Stack
 
-[React 18](https://react.dev/) · [TypeScript](https://www.typescriptlang.org/) · [Vite 5](https://vitejs.dev/) · [Tailwind CSS 4](https://tailwindcss.com/) · [Three.js](https://threejs.org/) · [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+[React 19](https://react.dev/) · [TypeScript 7](https://www.typescriptlang.org/) · [Vite 8](https://vitejs.dev/) · [Tailwind 4](https://tailwindcss.com/) · [Three.js](https://threejs.org/) · [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
 
 ## Getting Started
 
 ```bash
 git clone https://github.com/QueensStartupSummit/website.git
 cd website
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Go to [http://localhost:3000](http://localhost:3000).
 
-> **Requirements:** Node.js 18+, npm or yarn
+> **Requirements:** [Bun](https://bun.sh)
 
 ## Scripts
 
-| Command | Description |
-| --- | --- |
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
+| Command           | Description              |
+| ----------------- | ------------------------ |
+| `bun run dev`     | Start development server |
+| `bun run build`   | Production build         |
+| `bun run preview` | Preview production build |
 
 ## Contributing
 
