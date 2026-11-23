@@ -5,6 +5,7 @@ import About from "./components/About";
 import Testimonial from "./components/Testimonial";
 import GetInvolved from "./components/GetInvolved";
 import Sponsors from "./components/Sponsors";
+import EventSchedule from "./components/EventSchedule";
 import Footer from "./components/Footer";
 
 // Lazy load below-the-fold components
@@ -62,6 +63,7 @@ function App() {
       >
         <Contact />
       </Suspense>
+      <EventSchedule />
       <Footer />
     </div>
   );
