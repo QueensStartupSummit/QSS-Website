@@ -89,13 +89,14 @@ const Header = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8" role="navigation" aria-label="Main navigation">
+          <nav className="hidden md:flex md:space-x-4 lg:space-x-6 xl:space-x-8 md:text-sm lg:text-base"role="navigation" aria-label="Main navigation">
             <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Home</button>
             <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">About</button>
             <button onClick={() => scrollToSection('get-involved')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Get Involved</button>
             <button onClick={() => scrollToSection('gallery')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Gallery</button>
             <button onClick={() => scrollToSection('sponsors')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Sponsors</button>
             <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded">Contact</button>
+            <button onClick={() => scrollToSection('schedule')} className="text-gray-700 hover:text-[#58baba] focus:text-[#58baba] transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-offset-2 rounded whitespace-nowrap">Event Schedule</button>
           </nav>
 
           <div className="hidden md:block">
@@ -128,7 +129,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         <div 
           className={`md:hidden transition-all duration-300 ease-in-out overflow-hidden ${
-            isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+            isMenuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
           }`}
           id="mobile-menu"
           role="navigation" 
@@ -178,6 +179,13 @@ const Header = () => {
               role="menuitem"
             >
               Contact
+            </button>
+            <button
+              onClick={() => scrollToSection('schedule')}
+              className="block w-full text-left px-4 py-3 min-h-[44px] text-gray-700 hover:text-[#58baba] hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-[#58baba] focus:ring-inset rounded-md transition-colors duration-200 font-medium"
+              role="menuitem"
+            >
+              Event Schedule
             </button>
             <div className="pt-2 border-t border-gray-200">
               <a
