@@ -81,6 +81,9 @@ const Hero = () => {
                   Students supporting students getting into the startup world across Canada.
                   <span className="block mt-1 font-medium text-gray-700">
                     Any school, any year, any program.
+                    <span className="block mt-1 text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl mb-3 md:mb-4 lg:mb-5 text-gray-600 leading-relaxed font-light px-2 sm:px-0">
+                      Join us at the AI Startup Catalyst & Pitchathon this Friday, November 27th for an exciting day of networking, learning, and inspiration!
+                    </span>
                   </span>
                 </p>
 
@@ -88,7 +91,7 @@ const Hero = () => {
                 <div className="flex flex-col gap-2 md:gap-3 lg:gap-3 justify-center lg:justify-start items-center mb-4 md:mb-6 lg:mb-6">
                   <div className="flex items-center text-sm sm:text-base text-gray-700 bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-gray-100 w-full sm:w-auto justify-center">
                     <Calendar className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-[#58baba] flex-shrink-0" />
-                    <span className="font-medium">TBA</span>
+                    <span className="font-medium">November 27th, 2026</span>
                   </div>
                   <div className="flex items-center text-sm sm:text-base text-gray-700 bg-gray-50 px-3 sm:px-4 py-2 sm:py-3 rounded-xl border border-gray-100 w-full sm:w-auto justify-center">
                     <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2 sm:mr-3 text-[#58baba] flex-shrink-0" />
