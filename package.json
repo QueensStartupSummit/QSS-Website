@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "format": "prettier --write src vite.config.ts tsconfig.json .prettierrc.json package.json index.html README.md .github/workflows/deploy.yml",
+    "format": "bun fmt --print-width 120 src vite.config.ts tsconfig.json package.json index.html README.md .github/workflows/deploy.yml",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -29,7 +29,6 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.3.0",
-    "prettier": "^3.10.1",
     "tailwindcss": "^4.3.5",
     "typescript": "^7.0.2",
     "vite": "^8.3.8"
